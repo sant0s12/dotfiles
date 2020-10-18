@@ -30,7 +30,7 @@ font pango:Noto Sans 8
 # Follow mouse
 focus_follows_mouse yes
 
-default_border pixel 2
+default_border pixel 1
 default_floating_border normal
 
 # Fullscreen popups
@@ -51,10 +51,12 @@ set_from_resource $fg i3wm.color6 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 set_from_resource $ind i3wn.color7 #f0f0f0
 
+set $bl #000000
+
 # class                 border  backgr. text indicator child_border
-client.focused		$fg     $bg     $fg  $ind      $fg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.focused		    $fg     $bg     $fg  $ind      $fg
+client.focused_inactive $bl     $bl     $fg  $bl       $bl
+client.unfocused        $bl     $bl     $fg  $bl       $bl
 client.urgent           $bg     $bg     $fg  $fg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
