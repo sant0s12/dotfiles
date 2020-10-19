@@ -14,7 +14,7 @@ URxvt*transparent: false
 URxvt*depth: 24
 URxvt*shading: 0
 URxvt*cursorColor: #00FF00
-URxvt*letterSpace: -1
+URxvt*letterSpace: 0
 
 ! Interaction
 ! ===========
