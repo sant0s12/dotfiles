@@ -1,4 +1,3 @@
-xset dpms 300
 setxkbmap -option caps:escape
 
 # gnome keyring

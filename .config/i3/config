@@ -90,7 +90,7 @@ exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/launch.sh
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 
-exec --no-startup-id xidlehook --not-when-fullscreen --timer 400 'lockscreen' '' --timer 3600 'systemctl suspend' ''
+exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 200 'xset dpms force off' '' --timer 400 'lockscreen' '' --timer 3600 'systemctl suspend' ''
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -218,7 +218,7 @@ bindsym $mod+l focus right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left exec --no-startup-id playerctl previous
 bindsym $mod+Right exec --no-startup-id playerctl next
-bindsym $mod+Down exec --no-startup-id playerctl pause
+bindsym $mod+Down exec --no-startup-id playerctl -a pause
 bindsym $mod+Up exec --no-startup-id playerctl play-pause
 
 # move focused window
@@ -315,7 +315,7 @@ bindsym $mod+w exec --no-startup-id $BROWSER
 bindsym $mod+Ctrl+w exec $BROWSER --incognito
 
 # Spotify
-bindsym $mod+m exec --no-startup-id spotify-i3
+bindsym $mod+m exec --no-startup-id spotify-i3 $ws10
 
 # Ranger
 bindsym $mod+e exec $EXPLORER

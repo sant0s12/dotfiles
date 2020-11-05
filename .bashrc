@@ -1,5 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+set -o vi
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
@@ -14,4 +15,5 @@ eval $(opam env)
 
 alias ls='ls --color=auto'
 alias dotfiles='git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
-
+alias py='python'
+alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
