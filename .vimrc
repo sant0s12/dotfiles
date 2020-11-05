@@ -1,4 +1,5 @@
 syntax on
+filetype plugin on
 
 set autoindent
 set ignorecase
@@ -31,6 +32,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
+Plug 'pandysong/ghost-text.vim'
 
 let g:airline_powerline_fonts = 1
 
@@ -42,6 +44,42 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
+
+" Custom remaps
+"=============================================
+let mapleader=" "
+
+map + <C-w>+
+map - <C-w>-
+map <leader>+ <C-w>>
+map <leader>- <C-w><
+
+map <leader>h :wincmd h<CR>
+map <leader>j :wincmd j<CR>
+map <leader>k :wincmd k<CR>
+map <leader>l :wincmd l<CR>
+
+map <leader>s :sp<CR>
+map <leader>v :vsp<CR>
+
+map <tab> :tabNext<CR>
+map <leader><tab> :tabprevious<CR>
+map <leader>t :tabnew<CR>
+
+map <leader>e :CocCommand explorer<CR>
+
+map <F6> :setlocal spell! spelllang=en_us <CR>
+map <Enter> o<ESC>
+
+" Compile and run C++
+map <F8> :w <CR> :!clear && g++ % -o '%:r' && ./'%:r' <CR>
+"=============================================
+"
+augroup configFiles
+	autocmd!
+	autocmd BufWritePost $XDG_CONFIG_HOME/polybar/config call system('$XDG_CONFIG_HOME/polybar/launch.sh')
+	autocmd BufWritePost $XDG_CONFIG_HOME/i3/config call system('i3 reload') 
+augroup END
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -57,55 +95,6 @@ inoremap <silent><expr> <TAB>
 	\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-map <F6> :setlocal spell! spelllang=en_us <CR>
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
-
-" Compile and run C++
-map <F8> :w <CR> :!clear && g++ % -o '%:r' && ./'%:r' <CR>
-
-" File tree
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 15
-
-augroup configFiles
-	autocmd!
-	autocmd BufWritePost $XDG_CONFIG_HOME/polybar/config call system('$XDG_CONFIG_HOME/polybar/launch.sh')
-	autocmd BufWritePost $XDG_CONFIG_HOME/i3/config call system('i3 reload') 
-augroup END
-
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
+" Merlin things
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
