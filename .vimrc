@@ -9,6 +9,7 @@ set autochdir
 set smartindent
 set tabstop=4
 set shiftwidth=4
+set listchars=""
 set clipboard=unnamedplus
 set noshowmatch
 set relativenumber
@@ -33,8 +34,12 @@ Plug 'phanviet/vim-monokai-pro'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'pandysong/ghost-text.vim'
+Plug 'thaerkh/vim-indentguides'
 
 let g:airline_powerline_fonts = 1
+
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -62,11 +67,12 @@ map <leader>l :wincmd l<CR>
 map <leader>s :sp<CR>
 map <leader>v :vsp<CR>
 
-map <tab> :tabNext<CR>
-map <leader><tab> :tabprevious<CR>
-map <leader>t :tabnew<CR>
+nmap tl :tabnext<CR>
+nmap th :tabprevious<CR>
+nmap <leader>t :tabnew<CR>
 
-map <leader>e :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>r <Plug>(coc-rename)
 
 map <F6> :setlocal spell! spelllang=en_us <CR>
 map <Enter> o<ESC>
