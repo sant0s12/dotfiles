@@ -72,7 +72,7 @@ client.background       $bg
 exec_always --no-startup-id xrandr --output eDP1 --primary && xrandr --output HDMI1 --auto --above eDP1
 
 # Start compositor
-exec_always --no-startup-id  "killall picom ; sleep .5 ; picom -CGb --experimental-backends"
+exec_always --no-startup-id  "killall picom ; sleep .5 ; picom --experimental-backends"
 
 # Start dunst
 exec_always --no-startup-id "killall dunst ; sleep .5 ; dunst"
@@ -169,13 +169,14 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 for_window [class="Spotify"] move to workspace number $ws10
-for_window [class="Thunderbird"] move to workspace number $ws9
+for_window [instance="urxvt" title="neomutt"] move to workspace number $ws9
 
 for_window [window_role="About"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [title="JDownloader"] floating enable
 for_window [title="JDownloader 2"] floating disable
 for_window [title="Microsoft Teams Notification"] floating enable
+for_window [title="ownCloud"] floating enable
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -318,7 +319,10 @@ bindsym $mod+Ctrl+w exec $BROWSER --incognito
 bindsym $mod+m exec --no-startup-id spotify-i3 $ws10
 
 # Ranger
-bindsym $mod+e exec $EXPLORER
+bindsym $mod+e exec --no-startup-id $EXPLORER
+
+# Neomutt
+bindsym $mod+n exec --no-startup-id $TERMINAL -e neomutt
 
 # Suspend and lock
 bindsym $mod+Shift+p exec --no-startup-id systemctl suspend

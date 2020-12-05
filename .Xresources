@@ -12,6 +12,7 @@ URxvt*font: xft:Hack Nerd Font Mono:size=9:minspace=false:autohint=true, xft:Bra
 URxvt*scrollBar: false
 URxvt*transparent: false 
 URxvt*depth: 24
+!URxvt*bg: '[80]#222222'
 URxvt*shading: 0
 URxvt*cursorColor: #00FF00
 URxvt*letterSpace: 0
