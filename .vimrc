@@ -15,10 +15,10 @@ set noshowmatch
 set relativenumber
 set noerrorbells
 set incsearch
-set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
 set undofile
+set undodir=~/.vim/undodir/,/tmp//
+set directory=~/.vim/swp/,/tmp//
 
 set colorcolumn=100
 
@@ -70,6 +70,8 @@ map <leader>v :vsp<CR>
 nmap tl :tabnext<CR>
 nmap th :tabprevious<CR>
 nmap <leader>t :tabnew<CR>
+
+nmap <leader>u :UndotreeToggle<CR>
 
 nmap <leader>e :CocCommand explorer<CR>
 nmap <leader>r <Plug>(coc-rename)
