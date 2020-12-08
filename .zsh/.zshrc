@@ -38,9 +38,7 @@ SAVEHIST=10000000
 HISTFILE=$XDG_CACHE_HOME/zsh/history
 
 # Zinit stuff
-source $ZDOTDIR/zinit/bin/zinit.zsh
-ZINIT[HOME_DIR]="$ZDOTDIR/zinit"
-ZINIT[BIN_DIR]="$ZINIT[HOME_DIR]/bin"
+source $ZDOTDIR/.zinit/bin/zinit.zsh
 
 setopt promptsubst
 
