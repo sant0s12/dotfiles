@@ -98,7 +98,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
 # Start redshift
-exec --no-startup-id "killall redshift ; redshift"
+exec_always --no-startup-id "killall redshift ; redshift -l $(curl -sf ipinfo.io/$(publicip)/loc | sed 's/,/:/g')"
 
 # Start libinput-gestures
 exec --no-startup-id "libinput-gestures-setup start"
