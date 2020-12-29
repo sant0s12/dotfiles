@@ -1,3 +1,4 @@
+#include "gruvbox-dark.resources"
 Xcursor.size: 16px
 
 Xft.antialias:              true

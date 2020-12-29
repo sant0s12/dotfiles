@@ -34,12 +34,17 @@ Plug 'phanviet/vim-monokai-pro'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'pandysong/ghost-text.vim'
-Plug 'thaerkh/vim-indentguides'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 let g:airline_powerline_fonts = 1
 
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
+let g:indent_guides_guide_size = 1
+
+let g:pandoc#command#autoexec_on_writes = 1
+let g:pandoc#command#autoexec_command = "Pandoc pdf"
+let g:pandoc#command#latex_engine = "pdflatex"
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -81,6 +86,8 @@ map <Enter> o<ESC>
 
 " Compile and run C++
 map <F8> :w <CR> :!clear && g++ % -o '%:r' && ./'%:r' <CR>
+
+nmap <S-s> :sh <CR>
 "=============================================
 "
 augroup configFiles

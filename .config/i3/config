@@ -72,14 +72,14 @@ client.background       $bg
 exec_always --no-startup-id xrandr --output eDP1 --primary && xrandr --output HDMI1 --auto --above eDP1
 
 # Start compositor
-exec_always --no-startup-id  "killall picom ; sleep .5 ; picom --experimental-backends"
+exec_always --no-startup-id  "(killall picom ; sleep .5) && picom --experimental-backends"
 
 # Start dunst
-exec_always --no-startup-id "killall dunst ; sleep .5 ; dunst"
+exec_always --no-startup-id "(killall dunst ; sleep .5) && dunst"
 
 # Set wallpaper and theme
 exec --no-startup-id setwallpaper
-exec_always --no-startup-id "[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources"
+exec_always --no-startup-id "[[ -f ~/.Xresources/Xresources]] && xrdb -merge -I$HOME ~/.Xresources/Xresources"
 
 # Start polybar
 exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/launch.sh
@@ -98,7 +98,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
 # Start redshift
-exec_always --no-startup-id "killall redshift ; redshift -l $(curl -sf ipinfo.io/$(publicip)/loc | sed 's/,/:/g')"
+exec --no-startup-id "(killall redshift ; sleep .5) && redshift -l $(curl -sf ipinfo.io/$(publicip)/loc | sed 's/,/:/g')"
 
 # Start libinput-gestures
 exec --no-startup-id "libinput-gestures-setup start"
@@ -173,10 +173,12 @@ for_window [instance="urxvt" title="neomutt"] move to workspace number $ws9
 
 for_window [window_role="About"] floating enable
 for_window [class="Blueman-manager"] floating enable
+for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [title="JDownloader"] floating enable
 for_window [title="JDownloader 2"] floating disable
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [title="ownCloud"] floating enable
+for_window [class="SimpleScreenRecorder"] floating enable
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
