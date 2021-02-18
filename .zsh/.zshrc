@@ -37,6 +37,8 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=$XDG_CACHE_HOME/zsh/history
 
+KEYTIMEOUT=1
+
 # Zinit stuff
 source $ZDOTDIR/.zinit/bin/zinit.zsh
 

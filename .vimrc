@@ -35,8 +35,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'pandysong/ghost-text.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'lervag/vimtex'
 
 let g:airline_powerline_fonts = 1
 
@@ -45,6 +44,8 @@ let g:indent_guides_guide_size = 1
 let g:pandoc#command#autoexec_on_writes = 1
 let g:pandoc#command#autoexec_command = "Pandoc pdf"
 let g:pandoc#command#latex_engine = "pdflatex"
+
+let g:vimtex_view_method = 'zathura'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}

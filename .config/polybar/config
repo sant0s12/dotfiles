@@ -238,8 +238,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = ADP0
+battery = BAT1
+adapter = AC
 full-at = 94
 time-format = %H:%M
 
