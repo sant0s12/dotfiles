@@ -53,7 +53,7 @@ font-2 = "JoyPixels:scale=12;2"
 
 modules-left = i3 xwindow 
 modules-center = date weather
-modules-right = trash filesystem xbacklight pulseaudio memory cpu battery 
+modules-right = trash filesystem xbacklight pulseaudio memory cpu battery-combined
 
 tray-position = right
 tray-padding = 1
@@ -235,6 +235,11 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery-combined]
+type = custom/script
+exec = ~/.local/bin/scripts/polybar/battery-combined.sh
+interval = 60
 
 [module/battery]
 type = internal/battery
