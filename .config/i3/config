@@ -103,8 +103,8 @@ exec --no-startup-id "(killall redshift ; sleep .5) && redshift -l $(curl -sf ip
 # Start libinput-gestures
 exec --no-startup-id "libinput-gestures-setup start"
 
-# Change keyboard layout to german qwerty
-exec --no-startup-id "setxkbmap de qwerty"
+# Change keyboard layout to ch qwerty
+exec --no-startup-id "setxkbmap ch && xmodmap -e 'keycode 52 = z Z z Z leftarrow yen leftarrow' && xmodmap -e 'keycode 29 = y Y y Y guillemotleft less guillemotleft'"
 
 # Auto tiling
 exec_always --no-startup-id autotiling
