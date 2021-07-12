@@ -1,0 +1,8 @@
+set sandbox none
+set recolor true
+set recolor-keephue true
+set selection-clipboard clipboard
+
+map <C-i> jumplist forward
+map <C-o> jumplist backward
+map i recolor

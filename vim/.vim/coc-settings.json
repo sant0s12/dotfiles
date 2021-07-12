@@ -1,0 +1,7 @@
+{
+	"explorer.icon.enableNerdfont": true,
+	"explorer.previewAction.onHover": false,
+	"explorer.keyMappings.global": {
+		"v": "open:vsplit"
+	}
+}

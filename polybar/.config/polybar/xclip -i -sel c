@@ -1,0 +1,9 @@
+[module/grive-status]
+type = custom/script
+exec = ~/.local/bin/scripts/polybar/grive-status.sh
+interval = 5
+format = "<label>"
+format-padding = 1
+format-underline = ${xrdb:color6}
+
+click-left = $EXPLORER ~/google-drive/ & 

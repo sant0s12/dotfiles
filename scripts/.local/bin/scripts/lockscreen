@@ -1,0 +1,6 @@
+#!/bin/sh
+playerctl -a pause
+killall -SIGUSR1 dunst #pause dunst
+pidof gnome-keyring-d && kill -9 "$(pgrep gnome-keyring-d)" #lock gnome-keyring
+pidof xsecurelock | XSECURELOCK_PAM_SERVICE=system-local-login XSECURELOCK_BLANK_TIMEOUT=1 XSECURELOCK_BLANK_DPMS_STATE=off XSECURELOCK_SHOW_DATETIME=1 xsecurelock
+killall -SIGUSR2 dunst #resume dunst
