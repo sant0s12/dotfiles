@@ -65,7 +65,7 @@ unsetopt correct_all
 setopt correct
 
 alias ls='ls --color=auto'
-alias dotfiles='git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
 alias py='python'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
 
