@@ -20,6 +20,11 @@ set undofile
 set undodir=~/.vim/undodir/,/tmp//
 set directory=~/.vim/swp/,/tmp//
 
+" Cursor shapes in different modes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 set colorcolumn=100
 
 call plug#begin('~/.vim/plugged')
@@ -38,6 +43,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'lervag/vimtex'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/SudoEdit.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'sedm0784/vim-you-autocorrect'
 
 let g:airline_powerline_fonts = 1
 
