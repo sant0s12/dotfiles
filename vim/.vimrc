@@ -25,6 +25,7 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
+set textwidth=100
 set colorcolumn=100
 
 call plug#begin('~/.vim/plugged')
@@ -34,11 +35,7 @@ Plug 'mbbill/undotree'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-Plug 'phanviet/vim-monokai-pro'
-Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
-Plug 'pandysong/ghost-text.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'lervag/vimtex'
 Plug 'dhruvasagar/vim-table-mode'
@@ -57,6 +54,11 @@ let g:pandoc#command#latex_engine = "pdflatex"
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_open_on_warning = 0
 
+augroup vimtex_config
+        au!
+        au User VimtexEventQuit call vimtex#compiler#clean(0)
+augroup END
+
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
@@ -65,6 +67,7 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
+set t_ut= "disable the Background Color Erase that messes with some color schemes
 
 " Custom remaps
 "=============================================
