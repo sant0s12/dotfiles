@@ -1,8 +1,11 @@
-set sandbox none
-set recolor true
+#set recolor true
 set recolor-keephue true
 set selection-clipboard clipboard
+set incremental-search
 
 map <C-i> jumplist forward
 map <C-o> jumplist backward
 map i recolor
+
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
