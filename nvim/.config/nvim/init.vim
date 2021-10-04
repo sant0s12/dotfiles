@@ -17,8 +17,6 @@ set noerrorbells
 set incsearch
 set nobackup
 set undofile
-set undodir=~/.vim/undodir/,/tmp//
-set directory=~/.vim/swp/,/tmp//
 
 " Cursor shapes in different modes
 let &t_SI = "\<Esc>[6 q"
@@ -35,13 +33,13 @@ Plug 'mbbill/undotree'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
-Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'lervag/vimtex'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'sedm0784/vim-you-autocorrect'
+Plug 'dense-analysis/ale'
 
 let g:airline_powerline_fonts = 1
 
@@ -101,7 +99,11 @@ map <Enter> o<ESC>
 " Compile and run C++
 map <F8> :w <CR> :!clear && g++ % -o '%:r' && ./'%:r' <CR>
 
-nmap <S-s> :sh <CR>
+" Shift-S for terminal
+nmap <S-s> :te<CR>i
+
+"To map <Esc> to exit terminal-mode: >
+tnoremap <Esc><Esc> <C-\><C-n>:q<CR>
 
 "=============================================
 "
@@ -109,7 +111,11 @@ augroup configFiles
 	autocmd!
 	autocmd BufWritePost $XDG_CONFIG_HOME/polybar/config call system('$XDG_CONFIG_HOME/polybar/launch.sh')
 	autocmd BufWritePost $XDG_CONFIG_HOME/i3/config call system('i3 reload') 
-augroup END
+augroup end
+
+augroup term
+	au TermClose * call feedkeys("i")
+augroup end
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -124,7 +130,3 @@ inoremap <silent><expr> <TAB>
 	\ <SID>check_back_space() ? "\<TAB>" :
 	\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Merlin things
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
