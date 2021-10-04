@@ -1,0 +1,1 @@
+curl -F"shorten=$1" https://0x0.st
