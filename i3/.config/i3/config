@@ -206,8 +206,8 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Use xbacklight to change backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -set $(expr $(xbacklight -get) \* 3 \/ 2 + 1) -fps 60
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -set $(expr $(xbacklight -get) \* 2 \/ 3) -fps 60
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
