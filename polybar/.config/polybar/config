@@ -54,7 +54,7 @@ font-3 = "Inconsolata Nerd Font Mono:style=Regular:size=16:weight=400;2"
 
 modules-left = i3 xwindow 
 modules-center = date weather
-modules-right = trash filesystem xbacklight pulseaudio memory cpu battery-combined
+modules-right = trash filesystem backlight pulseaudio memory cpu battery-combined
 
 tray-position = right
 tray-padding = 1
@@ -156,6 +156,21 @@ ws-icon-9 = 10;%{T4}%{T-}
 
 [module/xbacklight]
 type = internal/xbacklight
+
+format = <ramp>  <label>
+#format-underline = ${xrdb:color2}
+label = %percentage:3:3%%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+enable_scroll = true
+use-actual-brightness = false
 
 format = <ramp>  <label>
 #format-underline = ${xrdb:color2}
