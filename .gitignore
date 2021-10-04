@@ -2,7 +2,7 @@ watch_later/
 undodir/
 swp/
 spell/
-**/.vim/plugged/
+**/plugged/
 **/.zinit/plugins/
 **/.netrwhist
 **/.zcompdump

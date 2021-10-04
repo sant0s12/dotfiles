@@ -8,7 +8,7 @@ export TRASH=$XDG_DATA_HOME/Trash
 
 export TERMINAL=kitty
 export BROWSER=firefox
-export EDITOR=vim
+export EDITOR=nvim
 export EXPLORER="$TERMINAL -e ranger"
 
 export MOZ_USE_XINPUT2=1
