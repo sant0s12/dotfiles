@@ -11,6 +11,4 @@ if [ ! -z $1  ]; then
 fi
 
 xwallpaper --daemon --output all --zoom $XDG_CONFIG_HOME/wallpaper
-wal -n -t -i $XDG_CONFIG_HOME/wallpaper_colors
-#xrdb -merge ~/.Xresources/Xresources
-xrdb ~/.Xresources/Xresources
+#wal -n -t -i $XDG_CONFIG_HOME/wallpaper_colors

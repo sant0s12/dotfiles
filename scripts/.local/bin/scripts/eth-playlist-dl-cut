@@ -1,0 +1,33 @@
+#!/bin/sh
+
+VIDEOSFOLDER=Videos
+CUTFILE=$VIDEOSFOLDER/.cut
+
+if (eth-playlist-dl $1); then
+	[ ! -f $CUTFILE ] && touch $CUTFILE
+	for f in $VIDEOSFOLDER/*; do
+		if ! (cat $CUTFILE | grep -Eq "$(basename -- "$f")") && ! (echo $f | grep -Eq "ALTERED") &&
+			! [ -d "$f" ] ; then
+
+			vheight=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of \
+			csv=s=x:p=0 "$f")
+			vwidth=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of \
+			csv=s=x:p=0 "$f")
+			# Downscale to 1080p if greater resolution
+			if [ $vheight -gt "1080" ] && [ $vwidth -gt "1920" ]; then
+
+				#scale=$(bc -l <<< "1080./$vheight")
+				echo "Cutting $f would take forever so skipping sori..."
+				continue
+			fi
+
+			# Run auto-editor
+			echo "Cutting $f"
+			auto-editor "$f" --my_ffmpeg --has_vfr no --preset superfast --video_codec libx264 \
+				--video_bitrate "1M" --no_open --tune stillimage
+
+			#auto-editor "$f" --my_ffmpeg --has_vfr no --no_open exportMediaOps --video_codec copy --show_ffmpeg_debug -d
+			[ -f "${f%.*}_ALTERED.${f##*.}" ] && mv -T "${f%.*}_ALTERED.${f##*.}" "$f" && echo $(basename -- "$f") >> $CUTFILE
+		fi
+	done
+fi

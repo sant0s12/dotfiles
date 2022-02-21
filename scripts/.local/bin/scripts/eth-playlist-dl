@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -z $1 ] && [ -f $1 ]; then
+	youtube-dl $(cat $1) --playlist-reverse -o "./Videos/%(title)s-%(playlist_index)02d.%(ext)s"
+else
+	youtube-dl $1 --playlist-reverse -o "./Videos/%(title)s-%(playlist_index)02d.%(ext)s"
+fi
