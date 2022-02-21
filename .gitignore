@@ -4,5 +4,10 @@ swp/
 spell/
 **/plugged/
 **/.zinit/plugins/
+**/.zinit/completions/
+**/.zinit/polaris/
+**/.zinit/services/
+**/.zinit/snippets/
 **/.netrwhist
 **/.zcompdump
+**/__pycache__/
