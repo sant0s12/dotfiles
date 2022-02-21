@@ -17,6 +17,7 @@ set noerrorbells
 set incsearch
 set nobackup
 set undofile
+set nohlsearch
 
 " Cursor shapes in different modes
 let &t_SI = "\<Esc>[6 q"
@@ -96,6 +97,8 @@ nmap <leader>r <Plug>(coc-rename)
 map <F6> :setlocal spell! spelllang=en_us <CR>
 map <Enter> o<ESC>
 
+nmap zU <Plug>VimyouautocorrectUndo
+
 " Compile and run C++
 map <F8> :w <CR> :!clear && g++ % -o '%:r' && ./'%:r' <CR>
 
@@ -110,12 +113,12 @@ tnoremap <Esc><Esc> <C-\><C-n>:q<CR>
 augroup configFiles
 	autocmd!
 	autocmd BufWritePost $XDG_CONFIG_HOME/polybar/config call system('$XDG_CONFIG_HOME/polybar/launch.sh')
-	autocmd BufWritePost $XDG_CONFIG_HOME/i3/config call system('i3 reload') 
+	autocmd BufWritePost $XDG_CONFIG_HOME/i3/config call system('i3 restart')
 augroup end
 
-augroup term
-	au TermClose * call feedkeys("i")
-augroup end
+"augroup term
+	"au TermClose * call feedkeys("<CR>")
+"augroup end
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
