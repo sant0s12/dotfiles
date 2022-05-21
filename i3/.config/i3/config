@@ -68,8 +68,8 @@ client.background       $bg
 #				                #
 #################################
 
-# Set displays
-exec_always --no-startup-id xrandr --output eDP1 --primary && xrandr --output HDMI2 --auto --above eDP1
+# Set displays (removed because lxrandr)
+# exec_always --no-startup-id xrandr --output eDP1 --primary && xrandr --output HDMI2 --auto --above eDP1
 
 # Start compositor
 exec_always --no-startup-id  "(killall picom ; sleep .5) && picom --experimental-backends"
@@ -115,6 +115,9 @@ exec --no-startup-id "owncloud"
 
 # Session manager
 exec --no-startup-id "lxsession"
+
+# udiskie
+exec --no-startup-id "udiskie -s"
 
 #################################
 #				                #
@@ -352,7 +355,7 @@ bindsym $mod+comma exec --no-startup-id launch-focus-i3 signal-desktop "class=Si
 # Ferdi
 bindsym $mod+period exec --no-startup-id launch-focus-i3 ferdi "class=Ferdi" $ws9
 
-# Ranger
+# File explorer
 bindsym $mod+e exec --no-startup-id $EXPLORER
 
 # Evolution

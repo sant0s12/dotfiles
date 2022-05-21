@@ -41,6 +41,7 @@ Plug 'chrisbra/SudoEdit.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'sedm0784/vim-you-autocorrect'
 Plug 'dense-analysis/ale'
+Plug 'chrisbra/csv.vim'
 
 let g:airline_powerline_fonts = 1
 

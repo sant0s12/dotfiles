@@ -66,12 +66,12 @@ cursor-scroll = ns-resize
 
 [bar/secondary]
 inherit = bar/main
-monitor = HDMI1
+monitor = HDMI2
 
 tray-position = 
 
-modules-center =
-modules-right = date
+#modules-center =
+#modules-right = date
 
 [module/xwindow]
 type = internal/xwindow
@@ -342,6 +342,22 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = ~/.local/bin/scripts/polybar/weather.sh
 interval = 600
+
+[module/caffeine]
+type = custom/menu
+
+label-open = " "
+label-close = ""
+label-open-padding = 0
+label-close-padding = 1
+label-separator = " "
+
+menu-0-0 = " "
+menu-0-0-exec = notify-send 'caffeine -a'
+menu-0-1 = " "
+menu-0-1-exec = notify-send 'caffeine -d'
+menu-0-2 = " "
+menu-0-2-exec = notify-send 'caffeine kill'
 
 [settings]
 screenchange-reload = true

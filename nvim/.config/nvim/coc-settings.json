@@ -34,5 +34,9 @@
 		".venv",
 		"__pycache__",
 		"venv"
-		]
+		],
+
+	"codeLens.enable": true,
+
+	"metals.javaHome": "/usr/lib/jvm/java-11-openjdk"
 }
