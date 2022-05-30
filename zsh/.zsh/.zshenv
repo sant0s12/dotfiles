@@ -12,6 +12,7 @@ export EDITOR=nvim
 export EXPLORER="$TERMINAL -e lf"
 
 export MOZ_USE_XINPUT2=1
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 export RISCV=/opt/riscv
 

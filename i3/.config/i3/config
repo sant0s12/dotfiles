@@ -119,6 +119,7 @@ exec --no-startup-id "lxsession"
 # udiskie
 exec --no-startup-id "udiskie -s"
 
+
 #################################
 #				                #
 #  Workspaces			        #

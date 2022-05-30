@@ -1,0 +1,12 @@
+export XDG_SESSION_TYPE=wayland
+
+export QT_QPA_PLATFORM=wayland
+export MOZ_ENABLE_WAYLAND=1
+
+# gnome keyring
+export $(/usr/bin/gnome-keyring-daemon --start)
+
+# Xresources, they should be merged before the wm starts, so no exec
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
+exec sway
