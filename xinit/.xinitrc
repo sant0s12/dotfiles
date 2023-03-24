@@ -8,8 +8,6 @@ fi
 
 export XDG_SESSION_TYPE=x11
 
-setxkbmap -option caps:escape_shifted_capslock
-
 # gnome keyring
 export $(/usr/bin/gnome-keyring-daemon --start)
 
