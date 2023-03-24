@@ -31,6 +31,7 @@ width = 100%
 height = 24
 radius = 0.0
 fixed-center = true
+enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -52,9 +53,9 @@ font-1 = "Inconsolata Nerd Font:style=Bold:size=10.5:weight=400;2"
 font-2 = "JoyPixels:scale=12;2"
 font-3 = "Inconsolata Nerd Font Mono:style=Regular:size=16:weight=400;2"
 
-modules-left = i3 xwindow 
+modules-left = i3 xwindow
 modules-center = date weather
-modules-right = trash filesystem backlight pulseaudio memory cpu battery-combined
+modules-right = trash-interval dunst-snooze-interval dunst-snooze-ipc trash-ipc filesystem backlight pulseaudio memory cpu battery-combined
 
 tray-position = right
 tray-padding = 1
@@ -68,8 +69,6 @@ cursor-scroll = ns-resize
 inherit = bar/main
 monitor = HDMI2
 
-tray-position = 
-
 #modules-center =
 #modules-right = date
 
@@ -77,10 +76,20 @@ tray-position =
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/trash]
+[module/trash-ipc]
+type = custom/ipc
+hook-0 = ~/.local/bin/scripts/polybar/trash.sh
+hook-1 = ~/.local/bin/scripts/polybar/trash.sh --clean
+
+click-left = $EXPLORER $TRASH
+click-right = "#trash-ipc.hook.1"
+initial = 1
+
+[module/trash-interval]
 type = custom/script
-exec = ~/.local/bin/scripts/polybar/trash.sh
+exec = polybar-msg action trash-ipc hook 0
 interval = 60
+label = ""
 
 click-left = $EXPLORER $TRASH
 click-right = ~/.local/bin/scripts/polybar/trash.sh --clean &
@@ -92,7 +101,7 @@ interval = 5
 format = "%{O-3}<label>"
 #format-underline = ${xrdb:color6}
 
-click-left = xdg-open ~/google-drive/ & 
+click-left = xdg-open ~/google-drive/ &
 click-right = touch ~/google-drive/.run ; rm ~/google-drive/.run
 
 [module/filesystem]
@@ -343,6 +352,19 @@ type = custom/script
 exec = ~/.local/bin/scripts/polybar/weather.sh
 interval = 600
 
+[module/dunst-snooze-ipc]
+type = custom/ipc
+hook-0 = ~/.local/bin/scripts/polybar/dunst-snooze.sh
+hook-1 = ~/.local/bin/scripts/polybar/dunst-snooze.sh --toggle
+click-left = "#dunst-snooze-ipc.hook.1"
+initial = 1
+
+[module/dunst-snooze-interval]
+type = custom/script
+exec = polybar-msg action dunst-snooze-ipc hook 0
+interval = 10
+label = ""
+
 [module/caffeine]
 type = custom/menu
 
@@ -365,7 +387,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
