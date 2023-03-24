@@ -1,7 +1,7 @@
-#  ____              _    ___      _ ____  
+#  ____              _    ___      _ ____
 # / ___|  __ _ _ __ | |_ / _ \ ___/ |___ \ 
 # \___ \ / _` | '_ \| __| | | / __| | __) |
-#  ___) | (_| | | | | |_| |_| \__ \ |/ __/ 
+#  ___) | (_| | | | | |_| |_| \__ \ |/ __/
 # |____/ \__,_|_| |_|\__|\___/|___/_|_____|
 
 [ -d $XDG_CACHE_HOME/zsh ] || mkdir -p $XDG_CACHE_HOME/zsh
@@ -30,7 +30,7 @@ zinit wait lucid for \
 	blockf atpull'zinit creinstall -q .' atinit"zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'" zsh-users/zsh-completions \
 	softmoth/zsh-vim-mode
 
-unsetopt correct_all  
+unsetopt correct_all
 setopt correct
 
 # Kitty
@@ -58,7 +58,13 @@ lfcd () {
 alias ls='ls --color=auto'
 alias la='ls -la'
 alias lf=lfcd
+type bat &> /dev/null && alias cat=bat
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
 alias py='python'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
 alias swayconf='$EDITOR $XDG_CONFIG_HOME/sway/config'
+alias spotify='spotify-launcher'
+alias conda-activate='source ~/.miniconda3/bin/activate'
+alias make="make -j $(($(nproc) + 1))"
+alias sudoedit="doasedit"
+alias paru-remove-unused="paru -Qtdq | paru -Rns -"
