@@ -21,7 +21,7 @@ vim.opt.updatetime		= 300 -- Trigger CursorHold after 300 ms
 vim.opt.textwidth		= 100
 vim.opt.colorcolumn		= "100"
 
-vim.opt.completeopt		= menuone, noinsert, noselect
+vim.opt.completeopt		= {'menu', 'menuone', 'noselect'}
 
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess:append("c")
@@ -43,15 +43,21 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'uga-rosa/cmp-dictionary'
+Plug 'hrsh7th/cmp-omni'
+
+-- Grammar check
+Plug 'brymer-meneses/grammar-guard.nvim'
+Plug 'williamboman/nvim-lsp-installer'
 
 Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals'
+Plug 'ray-x/go.nvim'
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'lervag/vimtex'
-Plug 'vim-pandoc/vim-pandoc'
+Plug 'aspeddro/pandoc.nvim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim'
 Plug 'sedm0784/vim-you-autocorrect'
@@ -74,6 +80,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
+-- Better word motions
+Plug 'chaoren/vim-wordmotion'
+
+-- Misc
+Plug 'eandrju/cellular-automaton.nvim'
+
 vim.call('plug#end')
 
 
@@ -83,10 +95,6 @@ vim.call('plug#end')
 vim.g.airline_powerline_fonts = true
 
 vim.g.indent_guides_guide_size = 1
-
-vim.g['pandoc#command#autoexec_on_writes'] = true
-vim.g['pandoc#command#autoexec_command'] = "Pandoc pdf"
-vim.g['pandoc#command#latex_engine'] = "pdflatex"
 
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_quickfix_open_on_warning = 0
@@ -142,11 +150,29 @@ vim.keymap.set('t', '<Esc>', 		'<C-\\><C-n>')
 vim.keymap.set('n', 'g[', 			vim.diagnostic.goto_prev, { silent = true })
 vim.keymap.set('n', 'g]', 			vim.diagnostic.goto_next, { silent = true })
 
--- User Code action
-vim.keymap.set('n', 'ga', 			vim.lsp.buf.code_action, { silent = true })
-
-vim.keymap.set('n', 'gd', 			vim.lsp.buf.definition, { silent = true })
-vim.keymap.set('n', 'K', 			vim.lsp.buf.hover, { silent = true })
+-- Lsp keybindings
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
 
 vim.keymap.set('n', '<leader>e', 	':NvimTreeToggle<CR>')
 
@@ -155,9 +181,12 @@ vim.keymap.set('n', '<leader>gs', 	':Git<CR>')
 vim.keymap.set('n', '<leader>gc', 	':Git commit<CR>')
 vim.keymap.set('n', '<leader>gd', 	':G diff<CR>')
 vim.keymap.set('n', '<leader>ga', 	':G add<space>')
-vim.keymap.set('n', '<leader>gp', 	':G push<space>')
-vim.keymap.set('n', '<leader>gP', 	':G pull<space>')
+vim.keymap.set('n', '<leader>gp', 	':G push<CR>')
+vim.keymap.set('n', '<leader>gP', 	':G pull<CR>')
 
+vim.keymap.set('n', 'gl', 		    ':VimtexView<CR>')
+
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- Autocmd
 ----------------------------------------
@@ -181,7 +210,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
 
 vim.api.nvim_create_autocmd('BufWritePre', {
 	pattern = '<buffer>',
-	callback = vim.lsp.buf.formatting_sync,
+	callback = function() vim.lsp.buf.format() end,
 })
 
 local vimtexConfig = vim.api.nvim_create_augroup('vimtexConfig', {})
@@ -210,39 +239,112 @@ vim.api.nvim_create_autocmd('TermOpen', {
 	command = 'startinsert',
 })
 
+-- Close quickfixlist on buffer close
+local qfClose = vim.api.nvim_create_augroup('qfClose', {})
+vim.api.nvim_create_autocmd('WinEnter', {
+	pattern = '*',
+	command = "if winnr('$') == 1 && &buftype == 'quickfix'|q|endif",
+})
 
 -- LSP
 ----------------------------------------
+local lsp_installer = require("nvim-lsp-installer").setup({
+  ui = {
+         icons = {
+             server_installed = "✓",
+             server_pending = "➜",
+             server_uninstalled = "✗"
+         }
+  }
+})
+
 local nvim_lsp = require'lspconfig'
 
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-    },
+require("grammar-guard").init()
+nvim_lsp.grammar_guard.setup({
+    cmd = { '/home/santos/.local/share/nvim/lsp_servers/ltex/ltex-ls/bin/ltex-ls' },
+    settings = {
+		ltex = {
+			enabled = { "latex", "tex", "bib", "markdown" },
+			language = "en",
+			diagnosticSeverity = "information",
+			setenceCacheSize = 2000,
+			additionalRules = {
+				enablePickyRules = true,
+				motherTongue = "en",
+			},
+			trace = { server = "verbose" },
+			dictionary = {},
+			disabledRules = {en = {"TOO_LONG_SENTENCE"}},
+			hiddenFalsePositives = {},
+		},
+	},
+})
 
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
+nvim_lsp.texlab.setup{
+  on_attach = on_attach,
 }
 
-require('rust-tools').setup(opts)
+nvim_lsp.pylsp.setup{
+  on_attach = on_attach,
+  settings = {
+     formatCommand = {"black"},
+     pylsp = {
+       plugins = {
+         black = {
+           enabled = true
+         },
+         pycodestyle = {
+            maxLineLength = 100
+         },
+       }
+     }
+  }
+}
 
-require'lspconfig'.texlab.setup{}
+nvim_lsp.clangd.setup{
+  on_attach = on_attach
+}
+
+require('rust-tools').setup{
+  tools = { -- rust-tools options
+      autoSetHints = true,
+  },
+
+  -- all the opts to send to nvim-lspconfig
+  -- these override the defaults set by rust-tools.nvim
+  -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+  server = {
+      -- on_attach is a callback called when the language server attachs to the buffer
+      -- on_attach = on_attach,
+      on_attach = on_attach,
+      settings = {
+          -- to enable rust-analyzer settings visit:
+          -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+          ["rust-analyzer"] = {
+              -- enable clippy on save
+              checkOnSave = {
+                  command = "clippy"
+              },
+          }
+      }
+  },
+}
+
+require 'go'.setup({
+  goimport = 'gopls', -- if set to 'gopls' will use golsp format
+  gofmt = 'gopls', -- if set to gopls will use golsp format
+  max_line_len = 120,
+  tag_transform = false,
+  test_dir = '',
+  comment_placeholder = '   ',
+  lsp_cfg = true, -- false: use your own lspconfig
+  lsp_keymaps = false,
+  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+  lsp_on_attach = true, -- use on_attach from go.nvim
+  dap_debug = true,
+})
+
 
 local cmp = require'cmp'
 cmp.setup({
@@ -272,27 +374,11 @@ cmp.setup({
   -- Installed sources
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'omni' },
     { name = 'vsnip' },
     { name = 'path' },
     { name = 'buffer' },
-    { name = 'dictionary', keyword_length = 2 },
   },
-})
-
-require'cmp_dictionary'.setup({
-		dic = {
-			spelllang = {
-				en = "./spell/de.utf-8.add.spl",
-			},
-		},
-		-- The following are default values.
-		exact = 2,
-		first_case_insensitive = false,
-		document = false,
-		document_command = "wn %s -over",
-		async = false,
-		capacity = 5,
-		debug = false,
 })
 
 metals_config = require("metals").bare_config()
@@ -306,8 +392,7 @@ metals_config.settings = {
 metals_config.root_patterns = {'.project_nvim'}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-metals_config.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
+metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- nvim-tree
 ----------------------------------------
