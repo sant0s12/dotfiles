@@ -62,9 +62,10 @@ type bat &> /dev/null && alias cat=bat
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
 alias py='python'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
-alias swayconf='$EDITOR $XDG_CONFIG_HOME/sway/config'
-alias spotify='spotify-launcher'
+alias hyprconf='$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf'
 alias conda-activate='source ~/.miniconda3/bin/activate'
 alias make="make -j $(($(nproc) + 1))"
+alias sudo="doas"
 alias sudoedit="doasedit"
 alias paru-remove-unused="paru -Qtdq | paru -Rns -"
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
