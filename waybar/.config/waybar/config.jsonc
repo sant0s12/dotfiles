@@ -1,0 +1,108 @@
+{
+    "layer": "top", // Waybar at bottom layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 26,
+
+    // Choose the order of the modules
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["clock#date", "clock", "custom/weather"],
+    "modules-right": ["custom/pacman", "idle_inhibitor", "custom/trash", "disk", "backlight", "pulseaudio", "memory", "cpu", "upower", "tray"],
+
+    "wlr/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+          "1": "󰋜",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "󰍩",
+          "10": "󰋋",
+      },
+      "on-click": "activate",
+      "sort-by-number": true
+    },
+    "tray": {
+        "spacing": 0,
+        "show-passive-items": true
+    },
+    "disk": {
+        "format": "{path}: {free}"
+    },
+    "clock#date": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a %d %b}"
+    },
+    "clock": {
+        "format": "{:%I:%M %p}"
+    },
+    "cpu": {
+        "format": "󰍛 {usage:3}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "󰘚 {percentage:3}%"
+    },
+    "upower": {
+         "format": "{percentage:3} {time}",
+         "format-alt": "{percentage:3} {time}",
+         "icon-size": 13,
+         "hide-if-empty": true,
+         "tooltip": true,
+         "tooltip-spacing": 4,
+         "tooltip-padding": 0,
+    },
+    "backlight": {
+        "format": "{icon} {percent:3}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume:3}% {format_source}",
+        "format-muted": "󰝟 {volume:3}% {format_source}",
+        "format-bluetooth": " {icon} {volume:3}% {format_source}",
+        "format-bluetooth-muted": " 󰝟 {volume:3}% {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "killall pavucontrol || pavucontrol"
+    },
+    "custom/weather": {
+        "exec": "~/.local/bin/scripts/polybar/weather.sh",
+        "interval": 600,
+        "tooltip": false
+    },
+    "mpris": {
+        "format": "{player_icon} {title} - {artist}",
+        "format-paused": "{player_icon} {title} - {artist}",
+        "player-icons": {
+            "default": "",
+            "mpv": "🎵",
+            "spotify": "",
+        },
+        "status-icons": {
+            "paused": "󰏥",
+            "playing": "󰐌"
+        },
+        "ignored-players": ["firefox"]
+    },
+    "idle_inhibitor": {
+        "format": "<span rise='-12pt'>{icon}</span>",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰾪"
+        }
+    },
+    "custom/pacman": {
+        "format": " {}",
+        "interval": 86400,                     // every day
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "$TERMINAL -e 'paru'; pkill -x -SIGRTMIN+8 waybar", // update system
+        "signal": 8
+    },
+}

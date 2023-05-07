@@ -1,0 +1,141 @@
+/* -----------------------------------------------------------------------------
+ * Styles
+ * -------------------------------------------------------------------------- */
+
+/* COLORS */
+
+@define-color bg rgba(40, 40, 40, 0.9);
+@define-color bg2 rgba(70, 70, 70, 0.9);
+@define-color spotify-bg #1DB954;
+@define-color fg #ffffff;
+@define-color red #fb4934;
+@define-color purple #d3869b;
+@define-color bg1 #3c3836;
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 3px;
+    min-height: 0px;
+    margin: 0.1em 0.3em;
+}
+
+/* The whole bar */
+#waybar {
+    background: @bg;
+    color: @fg;
+    font-family: Inconsolata, Symbols Nerd Font;
+    font-size: 12px;
+    border-radius: 0px;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#custom-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#custom-alsa,
+#custom-pacman,
+#custom-weather,
+#custom-gpu,
+#tray,
+#backlight,
+#language,
+#upower,
+#disk,
+#idle_inhibitor {
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+}
+
+/* Workspaces stuff */
+
+#workspaces {
+    margin-left: 0em;
+    padding-left: 0em;
+}
+
+#workspaces button {
+    opacity: 0.3;
+    padding: 0em;
+    min-width: 1.5em;
+}
+
+#workspaces button.active {
+    color: #D8DEE9;
+    opacity: 1;
+}
+
+#workspaces button.urgent {
+    background: @red;
+    color: #D8DEE9;
+    opacity: 1;
+}
+
+#custom-weather {
+}
+
+#custom-pacman {
+}
+
+#idle_inhibitor.activated {
+    color: @bg;
+    background: @fg;
+}
+
+#memory {
+}
+
+#backlight {
+}
+
+#clock {
+}
+
+#clock.date {
+}
+
+#clock.time {
+}
+
+#pulseaudio { /* Unsused but kept for those who needs it */
+}
+
+#pulseaudio.muted {
+    background: @red;
+}
+#pulseaudio.source-muted {
+    background: @red;
+}
+
+#mpris {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+#mpris.playing {
+    color: @bg;
+    background: @fg;
+}
+
+#mpris.spotify.playing {
+    color: @fg;
+    background: @spotify-bg;
+}
+
+#upower {
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+}
+
+#tray {
+    padding: 0em 0.1em;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
