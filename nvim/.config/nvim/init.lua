@@ -86,6 +86,9 @@ Plug 'chaoren/vim-wordmotion'
 -- Misc
 Plug 'eandrju/cellular-automaton.nvim'
 
+-- Wakatime
+Plug 'wakatime/vim-wakatime'
+
 vim.call('plug#end')
 
 
@@ -208,10 +211,10 @@ vim.api.nvim_create_autocmd('CursorHold', {
 	callback = function() vim.diagnostic.open_float(nil, { focusable = false }) end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = '<buffer>',
-	callback = function() vim.lsp.buf.format() end,
-})
+--- vim.api.nvim_create_autocmd('BufWritePre', {
+	---pattern = '*',
+	---callback = function() vim.lsp.buf.format() end,
+---})
 
 local vimtexConfig = vim.api.nvim_create_augroup('vimtexConfig', {})
 vim.api.nvim_create_autocmd('User', {
@@ -436,6 +439,9 @@ require"nvim-tree".setup{
 			quit_on_open = true,
 		}
 	},
+    git = {
+        ignore = false
+    },
 }
 
 
