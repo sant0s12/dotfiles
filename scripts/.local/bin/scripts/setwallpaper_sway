@@ -1,16 +1,3 @@
 #!/bin/sh
 
-if [ ! -z $1  ]; then
-	if [ $1 == '--pacwall'  ]; then
-		pacwall -QD -S 4000x4000 -r 2 && setwallpaper pacwall.png && rm pacwall.png ; exit
-	else
-		# cp -f $1 $XDG_CONFIG_HOME/wallpaper && wal -c || echo "File not found"
-		# Experimental: increase contrast
-		cp -f $1 $XDG_CONFIG_HOME/wallpaper && ffmpeg -y -i $1 -vf eq=contrast="${2:-1}" -c:a copy -f image2 $XDG_CONFIG_HOME/wallpaper_colors && wal -c || echo "File not found"
-	fi
-fi
-
-#swaybg -i $XDG_CONFIG_HOME/wallpaper -m fill
-wal -n -t -i $XDG_CONFIG_HOME/wallpaper_colors
-#xrdb -merge ~/.Xresources/Xresources
-xrdb ~/.Xresources/Xresources
+cp -f $1 $XDG_CONFIG_HOME/wallpaper && wal -c || echo "File not found"

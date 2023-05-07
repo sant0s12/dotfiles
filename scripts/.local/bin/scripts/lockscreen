@@ -1,6 +1,13 @@
 #!/bin/sh
 playerctl -a pause
-dunstctl set-paused true #pause dunst
-#pidof gnome-keyring-d && kill -9 "$(pgrep gnome-keyring-d)" #lock gnome-keyring
-pidof xsecurelock | XSECURELOCK_PAM_SERVICE=system-local-login XSECURELOCK_BLANK_TIMEOUT=1 XSECURELOCK_BLANK_DPMS_STATE=off XSECURELOCK_SHOW_DATETIME=1 xsecurelock
-dunstctl set-paused false #resume dunst
+
+dunst_old=$(dunstctl is-paused)
+dunstctl set-paused true # pause dunst
+
+if [ -n "$WAYLAND_DISPLAY" ] ; then
+    pidof swaylock > /dev/null || swaylock
+elif [ -n "$DISPLAY" ] ; then
+    pidof xsecurelock > /dev/null || XSECURELOCK_PAM_SERVICE=system-local-login XSECURELOCK_BLANK_TIMEOUT=1 XSECURELOCK_BLANK_DPMS_STATE=off XSECURELOCK_SHOW_DATETIME=1 xsecurelock
+fi
+
+dunstctl set-paused $dunst_old # restore dunst state
