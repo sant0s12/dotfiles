@@ -33,7 +33,7 @@ vim.opt.shortmess:append("F")
 ----------------------------------------
 
 local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.vim/plugged')
+vim.call('plug#begin')
 
 Plug 'neovim/nvim-lspconfig'
 
