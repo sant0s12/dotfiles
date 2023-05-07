@@ -11,6 +11,9 @@
 	signingkey = 22EF7A325569685D18EE0E0896B232D1B72440C2
 [commit]
 	gpgsign = true
+	verbose = true
 [alias]
 	lg = log --decorate --abbrev-commit --graph
 	lga = log --all --decorate --abbrev-commit --graph
+[comit]
+	verbose = true
