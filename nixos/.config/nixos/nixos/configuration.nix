@@ -109,7 +109,10 @@
 
   xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableGlobalCompInit = false;
+  };
   users.defaultUserShell = pkgs.zsh;
 
   programs.direnv.enable = true;

@@ -1,16 +1,18 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
 
-export ZDOTDIR=$HOME/.zsh
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 export TRASH=$XDG_DATA_HOME/Trash
 
 export TERMINAL=kitty
-export BROWSER=librewolf
+export BROWSER=firefox
 export EDITOR=nvim
 export EXPLORER="$TERMINAL -e lf"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
 
 export MOZ_USE_XINPUT2=1
@@ -18,6 +20,12 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp"
 
 export RISCV=/opt/riscv
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
+
+export PNPM_HOME="/home/santos/.local/share/pnpm"
+
+export NIXOS_CONFIG_DIR=$(readlink -f "$XDG_CONFIG_HOME/nixos")
 
 # Fix programs putting stuff in ~
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
@@ -40,6 +48,17 @@ export PYTHONUSERBASE="$XDG_DATA_HOME"/python
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export HISTFILE="$XDG_DATA_HOME"/shell_history
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
+export W3M_DIR="$XDG_DATA_HOME"/w3m
+export PUB_CACHE="$XDG_CACHE_HOME"/pub
+export KUBECONFIG="$XDG_CONFIG_HOME"/kube/config
+export KREW_ROOT="$XDG_DATA_HOME"/krew
+export GDBHISTFILE="$XDG_CONFIG_HOME"/gdb/gdb_history
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
@@ -62,6 +81,22 @@ if [ -d "$HOME/.opam/default/bin" ] ; then
 	PATH="$HOME/.opam/default/bin:$PATH"
 fi
 
+if [ -d "$HOME/.local/share/flutter/bin" ] ; then
+	PATH="$HOME/.local/share/flutter/bin:$PATH"
+fi
+
+if [ -d "$PUB_CACHE/bin" ] ; then
+	PATH="$PUB_CACHE/bin:$PATH"
+fi
+
 if [ -d "$RISCV/bin" ] ; then
 	PATH="$RISCV/bin:$PATH"
+fi
+
+if [ -d "${KREW_ROOT:-$HOME/.krew}" ] ; then
+	PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
+if [ -d "$PNPM_HOME" ] ; then
+	PATH="$PNPM_HOME:$PATH"
 fi
