@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -22,23 +22,28 @@ return require('packer').startup(function(use)
     branch = 'v2.x',
     requires = {
       -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {                                      -- Optional
+      { 'neovim/nvim-lspconfig' }, -- Required
+      {
+        -- Optional
         'williamboman/mason.nvim',
         run = function()
           pcall(vim.cmd, 'MasonUpdate')
         end,
       },
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'L3MON4D3/LuaSnip' },     -- Required
+      { 'L3MON4D3/LuaSnip' },     -- Required
 
       -- Extra sources
-      {'FelipeLema/cmp-async-path'},
+      { 'FelipeLema/cmp-async-path' },
+
+      -- Rust tools
+      { 'simrat39/rust-tools.nvim' },
+
     },
     config = get_config("lsp")
   }
@@ -46,17 +51,16 @@ return require('packer').startup(function(use)
   -- Grammar check
   use 'brymer-meneses/grammar-guard.nvim'
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = get_config("nvim-treesitter") }
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-  -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    requires = { { 'nvim-lua/plenary.nvim' } },
     config = get_config("telescope")
   }
 
   use { 'lervag/vimtex', config = get_config("vimtex") }
-  use 'aspeddro/pandoc.nvim'
+  use { 'vim-pandoc/vim-pandoc' }
   use 'dhruvasagar/vim-table-mode'
   use 'chrisbra/csv.vim'
 
@@ -81,9 +85,45 @@ return require('packer').startup(function(use)
 
   -- Misc
   use 'eandrju/cellular-automaton.nvim'
+  use { 'xiyaowong/telescope-emoji.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
 
   -- Wakatime
   use 'wakatime/vim-wakatime'
+
+  -- Flutter tools
+  use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+  }
+
+  -- Tailwind CSS colorsuse({
+  use 'roobert/tailwindcss-colorizer-cmp.nvim'
+
+  -- Docs generation
+  use {
+    'kkoomen/vim-doge',
+    run = ':call doge#install()'
+  }
+
+  -- Github copilot
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true
+        }
+      })
+    end,
+  }
+
+  -- Formatting
+  use({ "stevearc/conform.nvim", config = get_config("conform") })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
