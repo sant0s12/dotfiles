@@ -4,11 +4,11 @@
     "height": 26,
 
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["clock#date", "clock", "custom/weather"],
-    "modules-right": ["custom/pacman", "idle_inhibitor", "custom/trash", "disk", "backlight", "pulseaudio", "memory", "cpu", "upower", "tray"],
+    "modules-right": ["custom/trash", "idle_inhibitor", "disk", "backlight", "pulseaudio#sink", "pulseaudio#source", "memory", "cpu", "upower", "tray"],
 
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
       "format": "{icon}",
       "format-icons": {
           "1": "󰋜",
@@ -18,12 +18,16 @@
           "5": "5",
           "6": "6",
           "7": "7",
-          "8": "8",
+          "8": "󰺻",
           "9": "󰍩",
           "10": "󰋋",
       },
       "on-click": "activate",
       "sort-by-number": true
+    },
+    "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
     },
     "tray": {
         "spacing": 0,
@@ -59,17 +63,24 @@
         "format": "{icon} {percent:3}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"]
     },
-    "pulseaudio": {
-        "format": "{icon} {volume:3}% {format_source}",
-        "format-muted": "󰝟 {volume:3}% {format_source}",
-        "format-bluetooth": " {icon} {volume:3}% {format_source}",
-        "format-bluetooth-muted": " 󰝟 {volume:3}% {format_source}",
+    "pulseaudio#sink": {
+        "format": "{icon} {volume:3}%",
+        "format-muted": "󰝟 {volume:3}%",
+        "format-bluetooth": " {icon} {volume:3}%",
+        "format-bluetooth-muted": " 󰝟 {volume:3}%",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "killall pavucontrol || pavucontrol"
+    },
+    "pulseaudio#source": {
+        "format": "{format_source}",
         "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "default": ["", "", ""]
         },
-        "on-click": "killall pavucontrol || pavucontrol"
+        "on-click": "swayosd-client --input-volume mute-toggle"
     },
     "custom/weather": {
         "exec": "~/.local/bin/scripts/polybar/weather.sh",
@@ -105,4 +116,13 @@
         "on-click": "$TERMINAL -e 'paru'; pkill -x -SIGRTMIN+8 waybar", // update system
         "signal": 8
     },
+    "custom/trash": {
+        "format": " {}",
+        "interval": 60,
+        "exec": "du --summarize -h $TRASH/files -t 5kB | { read usage; if [ -z \"$usage\" ]; then
+                 echo 0; else echo \"$usage\" | cut -f -1; fi; }",
+        "on-click": "$EXPLORER $TRASH",
+        "on-click-right": "trash-empty -f ; pkill -x -SIGRTMIN+9 waybar",
+        "signal": 9
+    }
 }
