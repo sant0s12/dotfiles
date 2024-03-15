@@ -1,0 +1,3 @@
+{
+  borgbackup = import ./borgbackup.nix;
+}
