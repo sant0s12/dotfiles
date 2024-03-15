@@ -4,10 +4,12 @@ playerctl -a pause
 dunst_old=$(dunstctl is-paused)
 dunstctl set-paused true # pause dunst
 
-if [ -n "$WAYLAND_DISPLAY" ] ; then
-    pidof swaylock > /dev/null || swaylock
-elif [ -n "$DISPLAY" ] ; then
-    pidof xsecurelock > /dev/null || XSECURELOCK_PAM_SERVICE=system-local-login XSECURELOCK_BLANK_TIMEOUT=1 XSECURELOCK_BLANK_DPMS_STATE=off XSECURELOCK_SHOW_DATETIME=1 xsecurelock
-fi
+# mute speakers
+pactl set-sink-mute "$(find_pulseaudio_sink_id analog-stereo)" true
 
-dunstctl set-paused $dunst_old # restore dunst state
+pidof swaylock > /dev/null || WAYLAND_DEBUG=1 swaylock -d >> /tmp/lockscreen.log 2>&1
+
+# wait for swaylock to finish
+wait $!
+
+dunstctl set-paused "$dunst_old" # restore dunst state

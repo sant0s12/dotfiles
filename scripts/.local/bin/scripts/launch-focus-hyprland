@@ -1,15 +1,21 @@
 #!/bin/sh
+
+while getopts ":x:c:" opt; do
+	case $opt in
+		x)
+			EXECUTE=$OPTARG
+			CLASS=$OPTARG
+			;;
+		c)
+			CLASS=$OPTARG
+			;;
+	esac
+done
+
 if [ "$#" -lt 1 ]; then exit 1; fi
 
-# Optionally pass the class in case it's not the same as the launch name
-if [ $2 ]; then
-	class=$2
+if [ "$(echo $(hyprctl -j clients | jq -r '.[] | (.class)') | grep -oP $CLASS)" ]; then
+	hyprctl dispatch focuswindow $CLASS
 else
-	class=$1
-fi
-
-if pidof $1; then
-	hyprctl dispatch focuswindow $class
-else
-	exec $1
+	exec $EXECUTE
 fi
