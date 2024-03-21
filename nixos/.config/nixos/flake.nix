@@ -19,6 +19,16 @@
     };
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -60,7 +70,7 @@
         };
       };
 
-      overlays = import ./overlays {inherit inputs outputs;};
+      overlays = import ./overlays {};
 
       nixosModules = import ./modules/nixos;
 

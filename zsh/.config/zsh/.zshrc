@@ -69,4 +69,3 @@ alias activate="source venv/bin/activate"
 alias vim=nvim
 alias vimrc="$EDITOR $XDG_CONFIG_HOME/nvim/init.lua"
 alias gef="gdb -ex 'source /usr/share/gef/gef.py'"
-alias rebuild="sudo nixos-rebuild switch --flake $NIXOS_CONFIG_DIR"

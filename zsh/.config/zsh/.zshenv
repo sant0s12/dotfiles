@@ -19,8 +19,6 @@ export MOZ_USE_XINPUT2=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp"
 
-export RISCV=/opt/riscv
-
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
 
 export PNPM_HOME="/home/santos/.local/share/pnpm"
@@ -58,6 +56,9 @@ export PUB_CACHE="$XDG_CACHE_HOME"/pub
 export KUBECONFIG="$XDG_CONFIG_HOME"/kube/config
 export KREW_ROOT="$XDG_DATA_HOME"/krew
 export GDBHISTFILE="$XDG_CONFIG_HOME"/gdb/gdb_history
+export IPFS_PATH="$XDG_DATA_HOME"/ipfs
+export MINIKUBE_HOME="$XDG_DATA_HOME"/minikube
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 if [ -d "$HOME/bin" ] ; then

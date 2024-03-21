@@ -30,6 +30,17 @@
   nix = {
     optimise.automatic = true;
     settings.experimental-features = ["nix-command" "flakes"];
+
+    registry = {
+      dev-templates = {
+        to = {
+          owner = "the-nix-way";
+          repo = "dev-templates";
+          type = "github";
+        };
+      };
+    };
+
     gc = {
       automatic = true;
       dates = "weekly";
@@ -62,12 +73,13 @@
 
   location.provider = "geoclue2";
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.lidSwitch = "hybrid-sleep";
 
   # Services
   services.upower.enable = true;
   services.udisks2.enable = true;
   services.blueman.enable = true;
+  services.rpcbind.enable = true;
 
   services.auto-cpufreq = {
     enable = true;
@@ -90,12 +102,23 @@
     };
   };
 
+  # I think this is needed for age
   services.openssh = {
     enable = true;
     # require public key authentication for better security
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
     #settings.PermitRootLogin = "yes";
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    nssmdns6 = true;
+    publish = {
+      domain = true;
+      addresses = true;
+    };
   };
 
   # gnome keyring
@@ -221,6 +244,10 @@
     compression = "auto,zstd";
     startAt = "daily";
     inhibitsSleep = true;
+    preHook = ''
+      ${lib.getExe pkgs.retry} -d 5 -t 5 ${config.system.path}/bin/ping -c 1 -q pi.lan.santos.party \
+      || (echo "Failed to reach backup server" && exit 1)
+    '';
     extraUnitConfig = {
       ConditionACPower = true;
       After = "network-online.target";
@@ -228,15 +255,21 @@
     extraTimerConfig = {WakeSystem = true;};
   };
 
+  programs.neovim = {
+    enable = true;
+    withNodeJs = true;
+    vimAlias = true;
+    defaultEditor = true;
+  };
+
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     git
     polkit_gnome
     gnome.gnome-keyring
     inputs.agenix.packages.${system}.default
     inputs.alejandra.defaultPackage.${system}
-    systemd-inhibit-wait
+    nfs-utils
   ];
 
   fonts = {

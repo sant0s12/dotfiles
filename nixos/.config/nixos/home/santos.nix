@@ -12,14 +12,16 @@
     bat
     jq
     kitty
-    nodejs
     trash-cli
+    rebuild
     waybar
-    cargo
     stow
-    go
-    python3
+    sipctl
+    xdragon
+    unzip
+    inkscape
     networkmanagerapplet
+    libreoffice
     firefox
     killall
     playerctl
@@ -31,17 +33,21 @@
     ferdium
     udiskie
     owncloud-client
+    mpv
     gammastep
+    file
     swayidle
     swaylock
     hyprlock
     dunst
+    ripgrep
     capitaine-cursors
     rofi-wayland
     libinput-gestures
     jellyfin-media-player
     neofetch
     lf
+    ctpv
     swayosd
     pavucontrol
     grim
@@ -104,6 +110,8 @@
       '';
     };
   };
+
+  fonts.fontconfig.enable = true;
 
   home.pointerCursor = {
     gtk.enable = true;
