@@ -25,10 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = {
@@ -37,6 +34,7 @@
     home-manager,
     flake-utils,
     agenix,
+    rust-overlay,
     ...
   } @ inputs:
     with flake-utils.lib; let
@@ -70,11 +68,15 @@
         };
       };
 
-      overlays = import ./overlays {};
+      overlays = import ./overlays {inherit outputs;};
 
       nixosModules = import ./modules/nixos;
 
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      packages = forAllSystems (system:
+        import ./pkgs ((import nixpkgs) {
+          inherit system;
+          overlays = [(import rust-overlay)];
+        }));
 
       formatter = forAllSystems (system: inputs.alejandra.defaultPackage.${system});
     };

@@ -16,6 +16,7 @@
     rebuild
     waybar
     stow
+    banshee
     sipctl
     xdragon
     unzip

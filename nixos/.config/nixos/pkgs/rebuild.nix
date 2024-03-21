@@ -11,7 +11,7 @@ pkgs.writeShellApplication {
     echo "Rebuilding NixOS..."
 
     # shellcheck disable=SC2024
-    sudo nixos-rebuild switch --flake . || false
+    sudo nixos-rebuild switch --show-trace --flake . || false
 
     IFS=" " read -r -a gen <<< "$(nixos-rebuild list-generations --flake . | grep current)"
     generation="''${gen[0]}"
