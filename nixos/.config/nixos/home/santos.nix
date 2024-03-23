@@ -34,6 +34,7 @@
     signal-desktop
     ferdium
     udiskie
+    kubectl
     owncloud-client
     mpv
     gammastep
