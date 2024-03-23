@@ -14,6 +14,7 @@
     kitty
     trash-cli
     rebuild
+    k9s
     waybar
     stow
     banshee
