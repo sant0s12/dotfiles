@@ -35,6 +35,7 @@
     ferdium
     udiskie
     kubectl
+    kubernetes-helm
     owncloud-client
     mpv
     gammastep
