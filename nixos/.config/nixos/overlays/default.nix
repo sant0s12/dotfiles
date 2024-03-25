@@ -8,6 +8,7 @@
 
   modifications = final: prev: {
     hyprland = inputs.hyprland.packages.${prev.system}.hyprland.overrideAttrs (old: {
+      debug = true;
       patches =
         (old.patches or [])
         ++ [
