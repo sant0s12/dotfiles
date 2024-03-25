@@ -26,6 +26,8 @@
     };
 
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
@@ -68,7 +70,7 @@
         };
       };
 
-      overlays = import ./overlays {inherit outputs;};
+      overlays = import ./overlays {inherit inputs outputs;};
 
       nixosModules = import ./modules/nixos;
 

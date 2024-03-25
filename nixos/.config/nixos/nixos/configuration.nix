@@ -20,7 +20,7 @@
   time.timeZone = "Europe/Zurich";
 
   nixpkgs = {
-    overlays = [outputs.overlays.additions inputs.rust-overlay.overlays.default];
+    overlays = [outputs.overlays.additions outputs.overlays.modifications inputs.rust-overlay.overlays.default];
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
