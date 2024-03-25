@@ -276,6 +276,7 @@
     inputs.agenix.packages.${system}.default
     inputs.alejandra.defaultPackage.${system}
     nfs-utils
+    pulseaudio # for pactl
   ];
 
   fonts = {
