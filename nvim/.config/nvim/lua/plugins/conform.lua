@@ -7,5 +7,7 @@ require("conform").setup({
     javascript = { { "prettierd", "prettier" } },
     typescript = { { "prettierd", "prettier" } },
     nix = { { "alejandra" } },
+    c = { { "clang_format" } },
+    cpp = { { "clang_format" } },
   },
 })

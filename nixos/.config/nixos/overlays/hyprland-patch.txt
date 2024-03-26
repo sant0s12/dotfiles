@@ -1,5 +1,5 @@
 diff --git a/src/managers/input/InputManager.cpp b/src/managers/input/InputManager.cpp
-index 7d820c8f..255c5adf 100644
+index 94245587..709c0f54 100644
 --- a/src/managers/input/InputManager.cpp
 +++ b/src/managers/input/InputManager.cpp
 @@ -131,19 +131,29 @@ void CInputManager::mouseMoveUnified(uint32_t time, bool refocus) {
@@ -61,13 +61,28 @@ index 7d820c8f..255c5adf 100644
      // overlays are above fullscreen
      if (!foundSurface)
          foundSurface = g_pCompositor->vectorToLayerSurface(mouseCoords, &PMONITOR->m_aLayerSurfaceLayers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY], &surfaceCoords, &pFoundLayerSurface);
-@@ -1171,6 +1171,12 @@ void CInputManager::onKeyboardKey(wlr_keyboard_key_event* e, SKeyboard* pKeyboar
+@@ -1171,6 +1171,27 @@ void CInputManager::onKeyboardKey(wlr_keyboard_key_event* e, SKeyboard* pKeyboar
          g_pKeybindManager->dpms("on");
      }
  
 +    if (g_pSessionLockManager->isSessionLocked() && !g_pSessionLockManager->isSurfaceSessionLock(g_pCompositor->m_sSeat.seat->keyboard_state.focused_surface)) {
 +        Debug::log(ERR, "BUG THIS: Session locked but focused isn't session lock on key");
 +        g_pInputManager->refocus();
++
++        if (!g_pSessionLockManager->isSurfaceSessionLock(g_pCompositor->m_sSeat.seat->keyboard_state.focused_surface)) {
++            // something failed??
++            for (auto& m : g_pCompositor->m_vMonitors) {
++                const auto SLS = g_pSessionLockManager->getSessionLockSurfaceForMonitor(m->ID);
++                if (!SLS)
++                    continue;
++
++                g_pCompositor->focusSurface(SLS->pWlrLockSurface->surface, nullptr);
++            }
++        }
++
++        if (!g_pSessionLockManager->isSurfaceSessionLock(g_pCompositor->m_sSeat.seat->keyboard_state.focused_surface))
++            Debug::log(ERR, "MEGA BUG THIS: No session lock found at all to focus to??");
++
 +        return;
 +    }
 +
