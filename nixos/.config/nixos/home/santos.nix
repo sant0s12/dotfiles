@@ -60,6 +60,7 @@
     wtype
     thunderbird
     wl-clipboard
+    lens
   ];
 
   dconf = {
