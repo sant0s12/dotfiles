@@ -60,6 +60,8 @@
     wtype
     thunderbird
     wl-clipboard
+    fluxcd
+    openlens
   ];
 
   dconf = {
