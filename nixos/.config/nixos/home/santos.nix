@@ -17,7 +17,6 @@
     k9s
     waybar
     stow
-    banshee
     sipctl
     xdragon
     unzip
