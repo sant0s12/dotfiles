@@ -14,6 +14,7 @@
     kitty
     trash-cli
     rebuild
+    tldr
     k9s
     waybar
     stow
