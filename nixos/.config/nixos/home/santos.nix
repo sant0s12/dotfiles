@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     btop
     bat
+    gimp
     jq
     kitty
     trash-cli
