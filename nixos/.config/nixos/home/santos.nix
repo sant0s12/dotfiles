@@ -18,6 +18,7 @@
     tldr
     k9s
     waybar
+    zoom-us
     stow
     sipctl
     xdragon
