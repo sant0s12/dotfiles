@@ -42,6 +42,8 @@ require('mason-lspconfig').setup({
 -- (Optional) Configure lua language server for neovim
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
+lspconfig.clangd.setup({})
+
 lsp_zero.ensure_installed({
   -- Replace these with whatever servers you want to install
   'pylsp',
