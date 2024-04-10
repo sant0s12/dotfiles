@@ -95,8 +95,10 @@
     };
 
     iconTheme = {
-      package = pkgs.morewaita-icon-theme;
-      name = "MoreWaita";
+      # package = pkgs.morewaita-icon-theme;
+      # name = "MoreWaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
     };
 
     font = {
