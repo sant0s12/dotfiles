@@ -15,5 +15,8 @@
     #       ./hyprland-patch.txt
     #     ];
     # });
+    blueman = prev.blueman.overrideAttrs (old: {
+      version = "2.3.5";
+    });
   };
 }
