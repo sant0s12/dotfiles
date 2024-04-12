@@ -196,7 +196,7 @@
 
   users.users.santos = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input" "video"];
+    extraGroups = ["wheel" "input" "video" "docker"];
   };
 
   # Secrets
@@ -297,6 +297,11 @@
         sansSerif = ["Fira Sans"];
       };
     };
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
   };
 
   # Do not change this
