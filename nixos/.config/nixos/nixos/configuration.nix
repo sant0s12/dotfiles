@@ -196,7 +196,7 @@
 
   users.users.santos = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input" "video" "docker"];
+    extraGroups = ["wheel" "input" "video"];
   };
 
   # Secrets
@@ -238,7 +238,7 @@
       monthly = -1; # Keep at least one archive for each month
     };
 
-    repo = "ssh://admin@pi.lan.santos.party/media/hdd0/backups/acedia";
+    repo = "ssh://borg@fileserver.lan.santos.party/mnt/storage/backups/acedia";
 
     encryption = {
       mode = "repokey-blake2";
@@ -297,11 +297,6 @@
         sansSerif = ["Fira Sans"];
       };
     };
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
   };
 
   # Do not change this
