@@ -245,7 +245,10 @@
       passCommand = "cat ${config.age.secrets.borgpass.path}";
     };
 
-    environment = {BORG_RSH = "ssh -i /etc/ssh/ssh_host_ed25519_key";};
+    environment = {
+      BORG_RSH = "ssh -i /etc/ssh/ssh_host_ed25519_key";
+      BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
+    };
     extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
     compression = "auto,zstd";
     startAt = "daily";
