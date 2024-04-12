@@ -238,7 +238,7 @@
       monthly = -1; # Keep at least one archive for each month
     };
 
-    repo = "ssh://borg@fileserver.lan.santos.party/mnt/storage/backups/acedia";
+    repo = "ssh://borg@fileserver.lan.santos.party:/mnt/storage/backups/acedia";
 
     encryption = {
       mode = "repokey-blake2";
