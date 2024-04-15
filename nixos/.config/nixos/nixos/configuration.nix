@@ -247,11 +247,11 @@
 
     environment = {
       BORG_RSH = "ssh -i /etc/ssh/ssh_host_ed25519_key";
-      BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
     };
+
     extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
     compression = "auto,zstd";
-    startAt = "daily";
+    startAt = "11:42";
     inhibitsSleep = true;
     preHook = ''
       ${lib.getExe pkgs.retry} -d 5 -t 5 ${config.system.path}/bin/ping -c 1 -q pi.lan.santos.party \

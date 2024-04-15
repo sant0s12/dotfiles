@@ -108,7 +108,7 @@ with lib; let
         + optionalString cfg.inhibitsSleep ''          \
                   ${getExe pkgs.systemd-inhibit-wait} \
                       --who="borgbackup" \
-                      --what="sleep" \
+                      --what="sleep:handle-lid-switch" \
                       --why="Scheduled backup" \
         ''
         + backupScript;
