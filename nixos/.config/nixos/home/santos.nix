@@ -16,7 +16,7 @@
     trash-cli
     hexchat
     rebuild
-    webcord
+    discord
     tldr
     k9s
     waybar
