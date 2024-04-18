@@ -48,3 +48,5 @@ vim.keymap.set('n', 'gl', ':VimtexView<CR>')
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set('n', '<space>F', function() require('conform').format({ async = true, lsp_fallback = true }) end)
+
+vim.keymap.set("n", "<Leader>d", function() require('neogen').generate() end, opts)

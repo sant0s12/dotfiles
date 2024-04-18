@@ -155,6 +155,12 @@ _G.packer_plugins = {
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  neogen = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0" },
+    loaded = true,
+    path = "/home/santos/.local/share/nvim/site/pack/packer/start/neogen",
+    url = "https://github.com/danymat/neogen"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -230,11 +236,6 @@ _G.packer_plugins = {
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-airline",
     url = "https://github.com/vim-airline/vim-airline"
   },
-  ["vim-doge"] = {
-    loaded = true,
-    path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-doge",
-    url = "https://github.com/kkoomen/vim-doge"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -289,38 +290,42 @@ time([[Defining packer_plugins]], false)
 time([[Config for lsp-zero.nvim]], true)
 require("plugins/lsp")
 time([[Config for lsp-zero.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require("plugins/nvim-tree")
-time([[Config for nvim-tree.lua]], false)
--- Config for: vim-airline
-time([[Config for vim-airline]], true)
-require("plugins/vim-airline")
-time([[Config for vim-airline]], false)
--- Config for: conform.nvim
-time([[Config for conform.nvim]], true)
-require("plugins/conform")
-time([[Config for conform.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("plugins/nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("plugins/telescope")
-time([[Config for telescope.nvim]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-require("plugins/project-nvim")
-time([[Config for project.nvim]], false)
--- Config for: vim-indent-guides
-time([[Config for vim-indent-guides]], true)
-require("plugins/vim-indent-guides")
-time([[Config for vim-indent-guides]], false)
 -- Config for: vimtex
 time([[Config for vimtex]], true)
 require("plugins/vimtex")
 time([[Config for vimtex]], false)
+-- Config for: vim-airline
+time([[Config for vim-airline]], true)
+require("plugins/vim-airline")
+time([[Config for vim-airline]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("plugins/nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: conform.nvim
+time([[Config for conform.nvim]], true)
+require("plugins/conform")
+time([[Config for conform.nvim]], false)
+-- Config for: neogen
+time([[Config for neogen]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
+time([[Config for neogen]], false)
+-- Config for: vim-indent-guides
+time([[Config for vim-indent-guides]], true)
+require("plugins/vim-indent-guides")
+time([[Config for vim-indent-guides]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("plugins/telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("plugins/nvim-tree")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+require("plugins/project-nvim")
+time([[Config for project.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

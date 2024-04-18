@@ -104,8 +104,10 @@ return require('packer').startup(function(use)
 
   -- Docs generation
   use {
-    'kkoomen/vim-doge',
-    run = ':call doge#install()'
+     "danymat/neogen",
+     config = function()
+         require('neogen').setup {}
+     end
   }
 
   -- Github copilot

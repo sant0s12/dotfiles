@@ -12,7 +12,7 @@ fi
 
 if [ $XDG_SESSION_TYPE = "wayland" ]; then
 	killall swaybg
-	swaybg -i $XDG_CONFIG_HOME/wallpaper &
+	swaybg -m fill -i $XDG_CONFIG_HOME/wallpaper &
 else
 	xwallpaper --daemon --output all --zoom $XDG_CONFIG_HOME/wallpaper
 fi

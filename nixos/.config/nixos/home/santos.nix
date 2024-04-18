@@ -14,6 +14,7 @@
     jq
     kitty
     trash-cli
+    hexchat
     rebuild
     tldr
     k9s
