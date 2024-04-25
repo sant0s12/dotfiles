@@ -20,7 +20,7 @@
     tldr
     k9s
     waybar
-    gossip
+    chromium
     stow
     sipctl
     xdragon
