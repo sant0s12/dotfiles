@@ -52,6 +52,15 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     unfunction kitty-integration
 fi
 
+# git push --force-with-lease
+git() {
+  if [[ $@ == 'push -f'* || $@ == 'push --force '*  ]]; then
+    echo Hey stupid, use --force-with-lease instead
+  else
+    command git "$@"
+  fi
+}
+
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitten ssh"
 
 alias ls='ls --color=auto'

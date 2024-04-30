@@ -20,11 +20,8 @@ vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
 
 vim.keymap.set('n', '<F6>', ':setlocal spell! spelllang=en_us <CR>')
 
--- Shift-S for terminal in new tab
-vim.keymap.set('n', '<S-s>', ':tabnew | term<CR>')
-
--- Ctrl-S for terminal in new tab
-vim.keymap.set('n', '<C-s>', ':bel split | wincmd j | resize 8 | term<CR>')
+-- Ctrl-CR for floating terminal
+vim.keymap.set('n', '<C-CR>', ':ToggleTerm direction=float <CR>')
 
 -- Esc to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')

@@ -87,9 +87,6 @@ return require('packer').startup(function(use)
   use 'eandrju/cellular-automaton.nvim'
   use { 'xiyaowong/telescope-emoji.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
 
-  -- Wakatime
-  use 'wakatime/vim-wakatime'
-
   -- Flutter tools
   use {
     'akinsho/flutter-tools.nvim',
@@ -126,6 +123,22 @@ return require('packer').startup(function(use)
 
   -- Formatting
   use({ "stevearc/conform.nvim", config = get_config("conform") })
+
+  -- Auto pairs
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+  }
+
+  -- Toggleterm
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = get_config("toggleterm")
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

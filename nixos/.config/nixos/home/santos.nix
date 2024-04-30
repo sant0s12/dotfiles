@@ -20,7 +20,6 @@
     tldr
     k9s
     waybar
-    chromium
     python3
     stow
     sipctl
