@@ -35,6 +35,7 @@
     atool
     inotify-tools
     swaybg
+    tor
     signal-desktop
     ferdium
     udiskie
