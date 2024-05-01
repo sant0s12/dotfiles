@@ -35,7 +35,7 @@
     atool
     inotify-tools
     swaybg
-    tor
+    tor-browser
     signal-desktop
     ferdium
     udiskie
@@ -81,7 +81,7 @@
   qt = {
     enable = true;
 
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
 
     style = {
       package = pkgs.adwaita-qt;
