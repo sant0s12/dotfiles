@@ -1,3 +1,1 @@
-{
-  borgbackup = import ./borgbackup.nix;
-}
+{ borgbackup = import ./borgbackup.nix; }

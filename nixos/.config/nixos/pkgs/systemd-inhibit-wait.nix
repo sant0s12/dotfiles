@@ -1,8 +1,8 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.writeShellApplication {
   name = "systemd-inhibit-wait";
 
-  runtimeInputs = [pkgs.systemd];
+  runtimeInputs = [ pkgs.systemd ];
 
   text = ''
     # https://github.com/systemd/systemd/issues/14045#issuecomment-1683764309
@@ -15,7 +15,7 @@ pkgs.writeShellApplication {
     # https://github.com/systemd/systemd/issues/14045
 
     declare -ir WAIT_INHIBITED_SECS=180
-    for I in ''$(seq 1 ''${WAIT_INHIBITED_SECS}); do
+    for I in $(seq 1 ''${WAIT_INHIBITED_SECS}); do
     	if [[ ''${I} -eq ''${WAIT_INHIBITED_SECS} ]]; then
     		>&2 echo "Failed to take inhibit lock after ''${I} seconds"
     		exit 1
@@ -27,6 +27,6 @@ pkgs.writeShellApplication {
     	fi
     	sleep 1
     done
-    exec systemd-inhibit "''$@"
+    exec systemd-inhibit "$@"
   '';
 }

@@ -13,11 +13,6 @@
 
     agenix.url = "github:ryantm/agenix";
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     flake-utils.url = "github:numtide/flake-utils";
 
     nixvim = {
@@ -26,24 +21,31 @@
     };
 
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    flake-utils,
-    agenix,
-    rust-overlay,
-    ...
-  } @ inputs:
-    with flake-utils.lib; let
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      flake-utils,
+      agenix,
+      rust-overlay,
+      ...
+    }@inputs:
+    with flake-utils.lib;
+    let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs defaultSystems;
-    in {
+    in
+    {
       nixosConfigurations = {
         acedia = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs;};
+          specialArgs = {
+            inherit inputs outputs;
+          };
 
           modules = [
             ./nixos/configuration.nix
@@ -61,23 +63,27 @@
       homeConfigurations = {
         santos = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {inherit inputs outputs;};
-          modules = [
-            ./home/santos.nix
-          ];
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/santos.nix ];
         };
       };
 
-      overlays = import ./overlays {inherit inputs outputs;};
+      overlays = import ./overlays { inherit inputs outputs; };
 
       nixosModules = import ./modules/nixos;
 
-      packages = forAllSystems (system:
-        import ./pkgs ((import nixpkgs) {
-          inherit system;
-          overlays = [(import rust-overlay)];
-        }));
+      packages = forAllSystems (
+        system:
+        import ./pkgs (
+          (import nixpkgs) {
+            inherit system;
+            overlays = [ (import rust-overlay) ];
+          }
+        )
+      );
 
-      formatter = forAllSystems (system: inputs.alejandra.defaultPackage.${system});
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
     };
 }

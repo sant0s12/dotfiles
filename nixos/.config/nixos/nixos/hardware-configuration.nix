@@ -5,56 +5,85 @@
   modulesPath,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   boot.resumeDevice = "/dev/mapper/enc";
-  boot.kernelParams = ["resume_offset=60323986"];
+  boot.kernelParams = [ "resume_offset=60323986" ];
 
   boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/4948429d-6f96-4cf9-8d98-95d0b2e18d36";
 
   fileSystems."/mnt/btrfs" = {
     device = "/dev/disk/by-uuid/048ec34d-87b3-4247-80fc-e880ae0f8cba";
     fsType = "btrfs";
-    options = ["subvol=/" "noatime"];
+    options = [
+      "subvol=/"
+      "noatime"
+    ];
   };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/048ec34d-87b3-4247-80fc-e880ae0f8cba";
     fsType = "btrfs";
-    options = ["subvol=root" "compress=zstd" "noatime"];
+    options = [
+      "subvol=root"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/048ec34d-87b3-4247-80fc-e880ae0f8cba";
     fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd" "noatime"];
+    options = [
+      "subvol=home"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/048ec34d-87b3-4247-80fc-e880ae0f8cba";
     fsType = "btrfs";
-    options = ["subvol=nix" "compress=zstd" "noatime"];
+    options = [
+      "subvol=nix"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/var/log" = {
     device = "/dev/disk/by-uuid/048ec34d-87b3-4247-80fc-e880ae0f8cba";
     fsType = "btrfs";
-    options = ["subvol=log" "compress=zstd" "noatime"];
+    options = [
+      "subvol=log"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/048ec34d-87b3-4247-80fc-e880ae0f8cba";
     fsType = "btrfs";
-    options = ["subvol=swap" "compress=zstd" "noatime"];
+    options = [
+      "subvol=swap"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/boot" = {
@@ -62,7 +91,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [{device = "/swap/swapfile";}];
+  swapDevices = [ { device = "/swap/swapfile"; } ];
 
   hardware.bluetooth.enable = true;
   hardware.acpilight.enable = true;

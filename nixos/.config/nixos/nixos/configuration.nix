@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     outputs.nixosModules.borgbackup
     ./hardware-configuration.nix
@@ -21,8 +22,14 @@
   networking.hostName = "acedia";
   time.timeZone = "Europe/Zurich";
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   nixpkgs = {
-    overlays = [outputs.overlays.additions outputs.overlays.modifications inputs.rust-overlay.overlays.default];
+    overlays = [
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      inputs.rust-overlay.overlays.default
+    ];
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
@@ -33,7 +40,13 @@
     optimise.automatic = true;
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
 
     registry = {
@@ -55,11 +68,12 @@
 
   services.xserver.xkb.extraLayouts.ch-qwerty = {
     description = "Swiss German QWERTY Layout";
-    languages = ["de"];
+    languages = [ "de" ];
     symbolsFile = builtins.fetchurl {
-      url = "https://gist.githubusercontent.com/sant0s12/\
-              9506659fbb86cbb25419a7856e0cf5a2/raw/\
-              9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty";
+      url = ''
+        https://gist.githubusercontent.com/sant0s12/
+                      9506659fbb86cbb25419a7856e0cf5a2/raw/
+                      9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty'';
       sha256 = "39a84dc8f1bde46bff21929b97e8f8da5ad10b4853257c468ca464f452c4500b";
     };
   };
@@ -133,9 +147,10 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
-  xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
   programs.zsh = {
     enable = true;
@@ -162,9 +177,9 @@
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -175,18 +190,18 @@
     };
   };
 
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   security.sudo = {
-    package = pkgs.sudo.override {withInsults = true;};
+    package = pkgs.sudo.override { withInsults = true; };
 
     extraRules = [
       {
-        groups = ["wheel"];
+        groups = [ "wheel" ];
         commands = [
           {
             command = "${config.system.path}/bin/nixos-rebuild";
-            options = ["NOPASSWD"];
+            options = [ "NOPASSWD" ];
           }
         ];
       }
@@ -195,7 +210,11 @@
 
   users.users.santos = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input" "video"];
+    extraGroups = [
+      "wheel"
+      "input"
+      "video"
+    ];
   };
 
   # Secrets
@@ -260,7 +279,9 @@
       ConditionACPower = true;
       After = "network-online.target";
     };
-    extraTimerConfig = {WakeSystem = true;};
+    extraTimerConfig = {
+      WakeSystem = true;
+    };
   };
 
   programs.neovim = {
@@ -276,7 +297,7 @@
     polkit_gnome
     gnome.gnome-keyring
     inputs.agenix.packages.${system}.default
-    inputs.alejandra.defaultPackage.${system}
+    nixfmt-rfc-style
     nfs-utils
     pulseaudio # for pactl
   ];
@@ -296,7 +317,7 @@
 
     fontconfig = {
       defaultFonts = {
-        sansSerif = ["Fira Sans"];
+        sansSerif = [ "Fira Sans" ];
       };
     };
   };

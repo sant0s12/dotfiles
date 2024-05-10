@@ -13,13 +13,9 @@ stdenv.mkDerivation {
     hash = "sha256-U5xnmU8p3IYXe4NTZmYmNFMoTm39dciBkKDJ8oEPbi8=";
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ autoPatchelfHook ];
 
-  buildInputs = [
-    glibc
-  ];
+  buildInputs = [ glibc ];
 
   dontUnpack = true;
 
