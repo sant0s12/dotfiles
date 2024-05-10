@@ -22,8 +22,6 @@
   networking.hostName = "acedia";
   time.timeZone = "Europe/Zurich";
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
   nixpkgs = {
     overlays = [
       outputs.overlays.additions
