@@ -80,6 +80,20 @@
     };
   };
 
+  xdg = {
+    enable = true;
+    mimeApps.defaultApplications = {
+      "image/png" = [ "loupe.desktop" ];
+      "image/jpeg" = [ "loupe.desktop" ];
+      "image/gif" = [ "loupe.desktop" ];
+      "image/bmp" = [ "loupe.desktop" ];
+      "image/svg+xml" = [
+        "loupe.desktop"
+        "inkscape.desktop"
+      ];
+    };
+  };
+
   qt = {
     enable = true;
 
