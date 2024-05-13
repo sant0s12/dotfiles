@@ -21,8 +21,6 @@
     };
 
     rust-overlay.url = "github:oxalica/rust-overlay";
-
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs =
