@@ -6,7 +6,7 @@ require("conform").setup({
     -- Use a sub-list to run only the first available formatter
     javascript = { { "prettierd", "prettier" } },
     typescript = { { "prettierd", "prettier" } },
-    nix = { { "alejandra" } },
+    nix = { { "alejandra", "nixfmt" } },
     c = { { "clang_format" } },
     cpp = { { "clang_format" } },
   },

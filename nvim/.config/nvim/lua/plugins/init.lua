@@ -40,10 +40,6 @@ return require('packer').startup(function(use)
 
       -- Extra sources
       { 'FelipeLema/cmp-async-path' },
-
-      -- Rust tools
-      { 'simrat39/rust-tools.nvim' },
-
     },
     config = get_config("lsp")
   }

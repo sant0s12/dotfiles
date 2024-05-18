@@ -30,7 +30,6 @@
     inkscape
     networkmanagerapplet
     libreoffice
-    firefox
     killall
     playerctl
     zathura

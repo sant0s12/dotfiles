@@ -285,6 +285,11 @@
     defaultEditor = true;
   };
 
+  programs.firefox = {
+    enable = true;
+    languagePacks = [ "en-GB" ];
+  };
+
   environment.systemPackages = with pkgs; [
     wget
     git
