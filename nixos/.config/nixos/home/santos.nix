@@ -82,6 +82,7 @@
   xdg = {
     enable = true;
     mimeApps.defaultApplications = {
+      "application/pdf" = [ "zathura.desktop" ];
       "image/png" = [ "loupe.desktop" ];
       "image/jpeg" = [ "loupe.desktop" ];
       "image/gif" = [ "loupe.desktop" ];
