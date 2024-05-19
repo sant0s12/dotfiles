@@ -79,8 +79,10 @@
     };
   };
 
-  xdg = {
+  xdg = rec {
     enable = true;
+    mimeApps.associations.added = mimeApps.defaultApplications;
+
     mimeApps.defaultApplications = {
       "application/pdf" = [ "zathura.desktop" ];
       "image/png" = [ "loupe.desktop" ];
