@@ -61,6 +61,8 @@ git() {
   fi
 }
 
+bindkey "''${key[Up]}" up-line-or-search
+
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitten ssh"
 
 alias ls='ls --color=auto'
