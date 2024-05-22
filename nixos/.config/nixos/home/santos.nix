@@ -19,6 +19,7 @@
     loupe
     rebuild
     discord
+    android-studio
     tldr
     k9s
     waybar

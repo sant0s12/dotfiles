@@ -82,6 +82,7 @@ return require('packer').startup(function(use)
   -- Misc
   use 'eandrju/cellular-automaton.nvim'
   use { 'xiyaowong/telescope-emoji.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+  use 'wakatime/vim-wakatime'
 
   -- Flutter tools
   use {
