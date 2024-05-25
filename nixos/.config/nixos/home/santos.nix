@@ -14,6 +14,7 @@
     gimp
     jq
     kitty
+    tidal-hifi
     trash-cli
     hexchat
     loupe
