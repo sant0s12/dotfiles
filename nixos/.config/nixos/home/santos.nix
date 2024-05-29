@@ -14,7 +14,6 @@
     gimp
     jq
     kitty
-    tidal-hifi
     trash-cli
     hexchat
     loupe
@@ -86,14 +85,14 @@
     mimeApps.associations.added = mimeApps.defaultApplications;
 
     mimeApps.defaultApplications = {
-      "application/pdf" = [ "zathura.desktop" ];
-      "image/png" = [ "loupe.desktop" ];
-      "image/jpeg" = [ "loupe.desktop" ];
-      "image/gif" = [ "loupe.desktop" ];
-      "image/bmp" = [ "loupe.desktop" ];
+      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      "image/png" = [ "org.gnome.Loupe.desktop" ];
+      "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+      "image/gif" = [ "org.gnome.Loupe.desktop" ];
+      "image/bmp" = [ "org.gnome.Loupe.desktop" ];
       "image/svg+xml" = [
-        "loupe.desktop"
-        "inkscape.desktop"
+        "org.gnome.Loupe.desktop"
+        "org.inkscape.Inkscape.desktop"
       ];
     };
   };
