@@ -13,7 +13,7 @@ HISTFILE=$XDG_DATA_HOME/zsh/history
 fpath+="$ZDOTDIR/completions"
 
 # Share history across open terminals
-setopt share_history
+# setopt share_history
 
 KEYTIMEOUT=1
 

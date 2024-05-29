@@ -46,15 +46,7 @@ lspconfig.clangd.setup({})
 
 lspconfig.rust_analyzer.setup{}
 
-lsp_zero.ensure_installed({
-  -- Replace these with whatever servers you want to install
-  'pylsp',
-
-  'clangd',
-
-  'texlab',
-})
-
+lspconfig.texlab.setup{}
 
 -- Flutter and Dart
 
