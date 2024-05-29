@@ -80,19 +80,16 @@
     };
   };
 
-  xdg = rec {
+  # xdg.configFile."mimeapps.list".force = true;
+  xdg.mimeApps = {
     enable = true;
-    mimeApps.associations.added = mimeApps.defaultApplications;
 
-    mimeApps.defaultApplications = {
+    defaultApplications = {
       "application/pdf" = [ "org.pwmt.zathura.desktop" ];
       "image/png" = [ "org.gnome.Loupe.desktop" ];
       "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
       "image/gif" = [ "org.gnome.Loupe.desktop" ];
-      "image/bmp" = [
-        "org.gnome.Loupe.desktop"
-        ""
-      ];
+      "image/bmp" = [ "org.gnome.Loupe.desktop" ];
       "image/svg+xml" = [
         "org.gnome.Loupe.desktop"
         "org.inkscape.Inkscape.desktop"
