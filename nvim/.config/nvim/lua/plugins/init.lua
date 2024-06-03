@@ -61,7 +61,6 @@ return require('packer').startup(function(use)
   use 'chrisbra/csv.vim'
 
   use 'mbbill/undotree'
-  use 'sheerun/vim-polyglot'
   use { 'vim-airline/vim-airline', config = get_config("vim-airline") }
   use 'gruvbox-community/gruvbox'
   use { 'nathanaelkane/vim-indent-guides', config = get_config("vim-indent-guides") }

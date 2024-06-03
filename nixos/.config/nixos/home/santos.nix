@@ -19,6 +19,7 @@
     loupe
     rebuild
     discord
+    tree-sitter
     android-studio
     tldr
     k9s
@@ -80,7 +81,6 @@
     };
   };
 
-  # xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
 

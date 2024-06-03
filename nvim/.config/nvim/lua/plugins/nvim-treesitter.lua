@@ -30,12 +30,16 @@ require'nvim-treesitter.configs'.setup {
         if ok and stats and stats.size > max_filesize then
             return true
         end
+
+        if lang == "latex" then
+          return true
+        end
     end,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = { "latex", "markdown" },
   },
 }

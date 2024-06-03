@@ -9,5 +9,6 @@ require("conform").setup({
     nix = { { "alejandra", "nixfmt" } },
     c = { { "clang_format" } },
     cpp = { { "clang_format" } },
+    tex = { { "latexindent" } }
   },
 })

@@ -261,11 +261,6 @@ _G.packer_plugins = {
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-pandoc",
     url = "https://github.com/vim-pandoc/vim-pandoc"
   },
-  ["vim-polyglot"] = {
-    loaded = true,
-    path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-polyglot",
-    url = "https://github.com/sheerun/vim-polyglot"
-  },
   ["vim-table-mode"] = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-table-mode",
@@ -295,18 +290,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-airline
-time([[Config for vim-airline]], true)
-require("plugins/vim-airline")
-time([[Config for vim-airline]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require("plugins/toggleterm")
 time([[Config for toggleterm.nvim]], false)
--- Config for: lsp-zero.nvim
-time([[Config for lsp-zero.nvim]], true)
-require("plugins/lsp")
-time([[Config for lsp-zero.nvim]], false)
+-- Config for: vimtex
+time([[Config for vimtex]], true)
+require("plugins/vimtex")
+time([[Config for vimtex]], false)
 -- Config for: neogen
 time([[Config for neogen]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
@@ -315,26 +306,30 @@ time([[Config for neogen]], false)
 time([[Config for project.nvim]], true)
 require("plugins/project-nvim")
 time([[Config for project.nvim]], false)
+-- Config for: vim-airline
+time([[Config for vim-airline]], true)
+require("plugins/vim-airline")
+time([[Config for vim-airline]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require("plugins/nvim-tree")
 time([[Config for nvim-tree.lua]], false)
--- Config for: conform.nvim
-time([[Config for conform.nvim]], true)
-require("plugins/conform")
-time([[Config for conform.nvim]], false)
--- Config for: vim-indent-guides
-time([[Config for vim-indent-guides]], true)
-require("plugins/vim-indent-guides")
-time([[Config for vim-indent-guides]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require("plugins/nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: vimtex
-time([[Config for vimtex]], true)
-require("plugins/vimtex")
-time([[Config for vimtex]], false)
+-- Config for: conform.nvim
+time([[Config for conform.nvim]], true)
+require("plugins/conform")
+time([[Config for conform.nvim]], false)
+-- Config for: lsp-zero.nvim
+time([[Config for lsp-zero.nvim]], true)
+require("plugins/lsp")
+time([[Config for lsp-zero.nvim]], false)
+-- Config for: vim-indent-guides
+time([[Config for vim-indent-guides]], true)
+require("plugins/vim-indent-guides")
+time([[Config for vim-indent-guides]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require("plugins/telescope")
@@ -355,7 +350,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua', 'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
