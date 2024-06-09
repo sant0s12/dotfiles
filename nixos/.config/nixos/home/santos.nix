@@ -19,7 +19,6 @@
     loupe
     rebuild
     discord
-    tree-sitter
     android-studio
     tldr
     k9s

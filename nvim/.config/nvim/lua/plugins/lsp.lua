@@ -30,15 +30,6 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end)
 
--- see :help lsp-zero-guide:integrate-with-mason-nvim
--- to learn how to use mason.nvim with lsp-zero
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  handlers = {
-    lsp_zero.default_setup,
-  }
-})
-
 -- (Optional) Configure lua language server for neovim
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
@@ -47,6 +38,8 @@ lspconfig.clangd.setup({})
 lspconfig.rust_analyzer.setup{}
 
 lspconfig.texlab.setup{}
+
+lspconfig.svelte.setup{}
 
 -- Flutter and Dart
 
