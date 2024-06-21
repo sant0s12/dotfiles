@@ -33,7 +33,6 @@ return require('packer').startup(function(use)
 			{ 'hrsh7th/nvim-cmp' }, -- Required
 			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
 			{ 'L3MON4D3/LuaSnip' }, -- Required
-			{ 'L3MON4D3/LuaSnip' }, -- Required
 
 			-- Extra sources
 			{ 'FelipeLema/cmp-async-path' },
@@ -58,9 +57,8 @@ return require('packer').startup(function(use)
 	use 'chrisbra/csv.vim'
 
 	use 'mbbill/undotree'
-	use { 'vim-airline/vim-airline', config = get_config("vim-airline") }
+
 	use 'gruvbox-community/gruvbox'
-	use { 'nathanaelkane/vim-indent-guides', config = get_config("vim-indent-guides") }
 	use 'chrisbra/SudoEdit.vim'
 	use 'bronson/vim-trailing-whitespace'
 
@@ -69,8 +67,10 @@ return require('packer').startup(function(use)
 	use { 'ahmedkhalf/project.nvim', config = get_config("project-nvim") }
 
 	-- File explorer
-	use 'kyazdani42/nvim-web-devicons'
-	use { 'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree") }
+	use { 'kyazdani42/nvim-tree.lua',
+		requires = { 'nvim-tree/nvim-web-devicons' },
+		config = get_config("nvim-tree")
+	}
 
 	-- Better word motions
 	use 'chaoren/vim-wordmotion'
@@ -139,6 +139,29 @@ return require('packer').startup(function(use)
 		config = function()
 			require('Comment').setup()
 		end
+	}
+
+	-- Indent lines
+	use {
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ibl").setup()
+		end
+	}
+
+	-- Auto close buffers
+	use {
+		"chrisgrieser/nvim-early-retirement",
+		config = function()
+			require("early-retirement").setup({})
+		end,
+	}
+
+	-- Lualine
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons' },
+		config = require('lualine').setup({ options = { theme = 'gruvbox' } })
 	}
 
 	-- Automatically set up your configuration after cloning packer.nvim

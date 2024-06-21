@@ -145,6 +145,12 @@ _G.packer_plugins = {
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
   },
+  ["indent-blankline.nvim"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0" },
+    loaded = true,
+    path = "/home/santos/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lazy-lsp.nvim"] = {
     config = { 'require("plugins/lazy-lsp")' },
     loaded = true,
@@ -156,6 +162,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/santos/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   neogen = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0" },
@@ -175,6 +186,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-early-retirement"] = {
+    config = { "\27LJ\2\nB\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\21early-retirement\frequire\0" },
+    loaded = true,
+    path = "/home/santos/.local/share/nvim/site/pack/packer/start/nvim-early-retirement",
+    url = "https://github.com/chrisgrieser/nvim-early-retirement"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -196,7 +213,7 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -241,22 +258,10 @@ _G.packer_plugins = {
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
-  ["vim-airline"] = {
-    config = { 'require("plugins/vim-airline")' },
-    loaded = true,
-    path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-indent-guides"] = {
-    config = { 'require("plugins/vim-indent-guides")' },
-    loaded = true,
-    path = "/home/santos/.local/share/nvim/site/pack/packer/start/vim-indent-guides",
-    url = "https://github.com/nathanaelkane/vim-indent-guides"
   },
   ["vim-pandoc"] = {
     loaded = true,
@@ -292,18 +297,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require("plugins/toggleterm")
-time([[Config for toggleterm.nvim]], false)
--- Config for: neogen
-time([[Config for neogen]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
-time([[Config for neogen]], false)
 -- Config for: vimtex
 time([[Config for vimtex]], true)
 require("plugins/vimtex")
 time([[Config for vimtex]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("plugins/nvim-tree")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: neogen
+time([[Config for neogen]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
+time([[Config for neogen]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require("plugins/toggleterm")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0", "config", "indent-blankline.nvim")
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("plugins/telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-early-retirement
+time([[Config for nvim-early-retirement]], true)
+try_loadstring("\27LJ\2\nB\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\21early-retirement\frequire\0", "config", "nvim-early-retirement")
+time([[Config for nvim-early-retirement]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
 require("plugins/project-nvim")
@@ -312,38 +333,22 @@ time([[Config for project.nvim]], false)
 time([[Config for lazy-lsp.nvim]], true)
 require("plugins/lazy-lsp")
 time([[Config for lazy-lsp.nvim]], false)
--- Config for: vim-indent-guides
-time([[Config for vim-indent-guides]], true)
-require("plugins/vim-indent-guides")
-time([[Config for vim-indent-guides]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require("plugins/nvim-tree")
-time([[Config for nvim-tree.lua]], false)
--- Config for: lsp-zero.nvim
-time([[Config for lsp-zero.nvim]], true)
-require("plugins/lsp")
-time([[Config for lsp-zero.nvim]], false)
--- Config for: vim-airline
-time([[Config for vim-airline]], true)
-require("plugins/vim-airline")
-time([[Config for vim-airline]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("plugins/nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("plugins/nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: lsp-zero.nvim
+time([[Config for lsp-zero.nvim]], true)
+require("plugins/lsp")
+time([[Config for lsp-zero.nvim]], false)
 -- Config for: conform.nvim
 time([[Config for conform.nvim]], true)
 require("plugins/conform")
 time([[Config for conform.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("plugins/telescope")
-time([[Config for telescope.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
