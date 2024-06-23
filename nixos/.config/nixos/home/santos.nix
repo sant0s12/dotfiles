@@ -34,7 +34,7 @@
     killall
     playerctl
     zathura
-    okular
+    evince
     atool
     inotify-tools
     swaybg
