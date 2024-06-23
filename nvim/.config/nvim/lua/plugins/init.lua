@@ -149,14 +149,6 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	-- Auto close buffers
-	use {
-		"chrisgrieser/nvim-early-retirement",
-		config = function()
-			require("early-retirement").setup({})
-		end,
-	}
-
 	-- Lualine
 	use {
 		'nvim-lualine/lualine.nvim',
