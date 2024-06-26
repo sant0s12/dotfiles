@@ -85,7 +85,7 @@
     enable = true;
 
     defaultApplications = {
-      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      "application/pdf" = [ "org.gnome.Evince.desktop" ];
       "image/png" = [ "org.gnome.Loupe.desktop" ];
       "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
       "image/gif" = [ "org.gnome.Loupe.desktop" ];
