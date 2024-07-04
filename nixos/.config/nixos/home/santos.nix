@@ -21,6 +21,7 @@
     discord
     android-studio
     tldr
+    wdisplays
     k9s
     waybar
     python3
