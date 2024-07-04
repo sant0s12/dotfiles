@@ -16,6 +16,7 @@
     kitty
     trash-cli
     hexchat
+    ladybird
     loupe
     rebuild
     discord
