@@ -201,9 +201,8 @@
     user.timers.wgzimmer = {
       enable = true;
       name = "wgzimmer";
+      wantedBy = [ "timers.target" ];
       description = "WG Zimmer Bot";
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
       timerConfig = {
         OnCalendar = "*-*-* *:*:00";
         WakeSystem = true;
