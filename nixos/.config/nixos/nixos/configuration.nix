@@ -204,7 +204,7 @@
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       timerConfig = {
-        OnCalendar = "*-*-* *:*/*:00";
+        OnCalendar = "*-*-* *:*/1:00";
         WakeSystem = true;
       };
     };
