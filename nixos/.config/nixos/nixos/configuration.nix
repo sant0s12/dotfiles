@@ -204,7 +204,7 @@
       wantedBy = [ "timers.target" ];
       description = "WG Zimmer Bot";
       timerConfig = {
-        OnCalendar = "*-*-* *:*:00";
+        OnCalendar = "*:0/15";
         WakeSystem = true;
       };
     };
