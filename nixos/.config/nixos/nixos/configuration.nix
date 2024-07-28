@@ -192,7 +192,6 @@
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       script = "/usr/bin/env nix develop --command python main.py";
-      startAt = "*-*-* *:*/30:00";
       serviceConfig = {
         WorkingDirectory = "%h/Code/wgzimmer-notify";
       };
@@ -205,7 +204,7 @@
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       timerConfig = {
-        OnCalendar = "*-*-* *:*/30:00";
+        OnCalendar = "*-*-* *:*/*:00";
         WakeSystem = true;
       };
     };
