@@ -187,6 +187,7 @@
 
     user.services.wgzimmer = {
       enable = true;
+      name = "wgzimmer";
       description = "WG Zimmer Bot";
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
