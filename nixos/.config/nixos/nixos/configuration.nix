@@ -192,7 +192,7 @@
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       wantedBy = [ "default.target" ];
-      script = "/usr/bin/env nix develop --command python main.py";
+      script = "${pkgs.nix}/bin/nix develop --command python main.py";
       serviceConfig = {
         WorkingDirectory = "%h/Code/wgzimmer-notify";
       };
