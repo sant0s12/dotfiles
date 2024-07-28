@@ -62,7 +62,7 @@
   };
 
   services.xserver = {
-    enable = true;
+    enable = false;
 
     xkb.layout = "ch-qwerty";
     xkb.options = "caps:swapescape";
@@ -77,8 +77,6 @@
         sha256 = "39a84dc8f1bde46bff21929b97e8f8da5ad10b4853257c468ca464f452c4500b";
       };
     };
-
-    displayManager.gdm.enable = true;
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -184,6 +182,18 @@
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
+      };
+    };
+
+    user.services.wgzimmer = {
+      enable = true;
+      description = "WG Zimmer Bot";
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      script = "/usr/bin/env nix develop --command python main.py";
+      startAt = "*-*-* *:*/30:00";
+      serviceConfig = {
+        WorkingDirectory = "%h/Code/wg-zimmer-notify";
       };
     };
   };
