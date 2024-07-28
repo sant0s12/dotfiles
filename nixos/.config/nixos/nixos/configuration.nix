@@ -194,7 +194,19 @@
       script = "/usr/bin/env nix develop --command python main.py";
       startAt = "*-*-* *:*/30:00";
       serviceConfig = {
-        WorkingDirectory = "%h/Code/wg-zimmer-notify";
+        WorkingDirectory = "%h/Code/wgzimmer-notify";
+      };
+    };
+
+    user.timers.wgzimmer = {
+      enable = true;
+      name = "wgzimmer";
+      description = "WG Zimmer Bot";
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      timerConfig = {
+        OnCalendar = "*-*-* *:*/30:00";
+        WakeSystem = true;
       };
     };
   };
