@@ -205,20 +205,12 @@
       description = "WG Zimmer Bot";
       timerConfig = {
         OnCalendar = "*:0/15";
-        WakeSystem = true;
+        Persistent = true;
       };
     };
   };
 
   security.pam.services.swaylock = { };
-  security.pam.loginLimits = [
-    {
-      domain = "santos";
-      item = "rtprio";
-      type = "-";
-      value = "-1";
-    }
-  ];
 
   security.sudo = {
     package = pkgs.sudo.override { withInsults = true; };
