@@ -211,6 +211,14 @@
   };
 
   security.pam.services.swaylock = { };
+  security.pam.loginLimits = [
+    {
+      domain = "santos";
+      item = "rtprio";
+      type = "-";
+      value = "99";
+    }
+  ];
 
   security.sudo = {
     package = pkgs.sudo.override { withInsults = true; };
