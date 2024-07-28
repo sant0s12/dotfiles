@@ -216,7 +216,7 @@
       domain = "santos";
       item = "rtprio";
       type = "-";
-      value = "99";
+      value = "-1";
     }
   ];
 
