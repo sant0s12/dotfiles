@@ -10,7 +10,7 @@ stdenv.mkDerivation {
 
   src = fetchurl {
     url = "https://tools.vseth.ethz.ch/sipctl/linux-amd64/sipctl";
-    hash = "sha256-H42G5BeUwF/MyFpyh7KH+8Oo7nVAWcbS8cSm+GLVz+4=";
+    hash = "sha256-1feekf+XWiqrbfwahpfYtuKN65Xuvl0nP33F+XUW+Ac=";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];

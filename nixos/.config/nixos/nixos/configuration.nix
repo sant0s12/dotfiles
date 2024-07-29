@@ -320,7 +320,7 @@
     wget
     git
     polkit_gnome
-    gnome.gnome-keyring
+    gnome-keyring
     inputs.agenix.packages.${system}.default
     nixfmt-rfc-style
     nfs-utils
