@@ -185,29 +185,29 @@
       };
     };
 
-    user.services.wgzimmer = {
-      enable = true;
-      name = "wgzimmer";
-      description = "WG Zimmer Bot";
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
-      wantedBy = [ "default.target" ];
-      script = "${pkgs.nix}/bin/nix develop --command python main.py";
-      serviceConfig = {
-        WorkingDirectory = "%h/Code/wgzimmer-notify";
-      };
-    };
-
-    user.timers.wgzimmer = {
-      enable = true;
-      name = "wgzimmer";
-      wantedBy = [ "timers.target" ];
-      description = "WG Zimmer Bot";
-      timerConfig = {
-        OnCalendar = "*:0/30";
-        Persistent = true;
-      };
-    };
+    # user.services.wgzimmer = {
+    #   enable = true;
+    #   name = "wgzimmer";
+    #   description = "WG Zimmer Bot";
+    #   after = [ "network-online.target" ];
+    #   wants = [ "network-online.target" ];
+    #   wantedBy = [ "default.target" ];
+    #   script = "${pkgs.nix}/bin/nix develop --command python main.py";
+    #   serviceConfig = {
+    #     WorkingDirectory = "%h/Code/wgzimmer-notify";
+    #   };
+    # };
+    #
+    # user.timers.wgzimmer = {
+    #   enable = true;
+    #   name = "wgzimmer";
+    #   wantedBy = [ "timers.target" ];
+    #   description = "WG Zimmer Bot";
+    #   timerConfig = {
+    #     OnCalendar = "*:0/30";
+    #     Persistent = true;
+    #   };
+    # };
   };
 
   security.pam.services.swaylock = { };
