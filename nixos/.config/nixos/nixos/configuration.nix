@@ -148,6 +148,14 @@
 
   xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
+  xdg.mime.defaultApplications = {
+    "text/html" = "firefox.desktop";
+    "x-scheme-handler/http" = "firefox.desktop";
+    "x-scheme-handler/https" = "firefox.desktop";
+    "x-scheme-handler/about" = "firefox.desktop";
+    "x-scheme-handler/unknown" = "firefox.desktop";
+  };
+
   programs.zsh = {
     enable = true;
     enableGlobalCompInit = false;
@@ -184,30 +192,6 @@
         TimeoutStopSec = 10;
       };
     };
-
-    # user.services.wgzimmer = {
-    #   enable = true;
-    #   name = "wgzimmer";
-    #   description = "WG Zimmer Bot";
-    #   after = [ "network-online.target" ];
-    #   wants = [ "network-online.target" ];
-    #   wantedBy = [ "default.target" ];
-    #   script = "${pkgs.nix}/bin/nix develop --command python main.py";
-    #   serviceConfig = {
-    #     WorkingDirectory = "%h/Code/wgzimmer-notify";
-    #   };
-    # };
-    #
-    # user.timers.wgzimmer = {
-    #   enable = true;
-    #   name = "wgzimmer";
-    #   wantedBy = [ "timers.target" ];
-    #   description = "WG Zimmer Bot";
-    #   timerConfig = {
-    #     OnCalendar = "*:0/30";
-    #     Persistent = true;
-    #   };
-    # };
   };
 
   security.pam.services.swaylock = { };
@@ -313,7 +297,11 @@
 
   programs.firefox = {
     enable = true;
-    languagePacks = [ "en-GB" ];
+    languagePacks = [
+      "en-GB"
+      "de"
+      "es-ES"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
