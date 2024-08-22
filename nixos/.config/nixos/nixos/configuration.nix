@@ -31,6 +31,9 @@
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
+
+      segger-jlink.acceptLicense = true;
+      permittedInsecurePackages = [ "segger-jlink-qt4-796s" ];
     };
   };
 
@@ -218,7 +221,6 @@
       "wheel"
       "input"
       "video"
-      "dialout"
     ];
   };
 
@@ -314,6 +316,7 @@
     nixfmt-rfc-style
     nfs-utils
     pulseaudio # for pactl
+    segger-jlink
   ];
 
   fonts = {
