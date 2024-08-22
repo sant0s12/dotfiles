@@ -64,22 +64,26 @@
     };
   };
 
-  services.xserver = {
-    enable = false;
+  services = {
+    xserver = {
+      enable = false;
 
-    xkb.layout = "ch-qwerty";
-    xkb.options = "caps:swapescape";
-    xkb.extraLayouts.ch-qwerty = {
-      description = "Swiss German QWERTY Layout";
-      languages = [ "de" ];
-      symbolsFile = builtins.fetchurl {
-        url = ''
-          https://gist.githubusercontent.com/sant0s12/
-                        9506659fbb86cbb25419a7856e0cf5a2/raw/
-                        9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty'';
-        sha256 = "39a84dc8f1bde46bff21929b97e8f8da5ad10b4853257c468ca464f452c4500b";
+      xkb.layout = "ch-qwerty";
+      xkb.options = "caps:swapescape";
+      xkb.extraLayouts.ch-qwerty = {
+        description = "Swiss German QWERTY Layout";
+        languages = [ "de" ];
+        symbolsFile = builtins.fetchurl {
+          url = ''
+            https://gist.githubusercontent.com/sant0s12/
+                          9506659fbb86cbb25419a7856e0cf5a2/raw/
+                          9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty'';
+          sha256 = "39a84dc8f1bde46bff21929b97e8f8da5ad10b4853257c468ca464f452c4500b";
+        };
       };
     };
+
+    udev.packages = with pkgs; [ segger-jlink ];
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -317,8 +321,6 @@
     nixfmt-rfc-style
     nfs-utils
     pulseaudio # for pactl
-
-    segger-jlink
   ];
 
   fonts = {
