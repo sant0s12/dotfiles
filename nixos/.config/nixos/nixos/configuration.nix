@@ -19,7 +19,15 @@
   boot.loader.systemd-boot.configurationLimit = 8;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "acedia";
+  networking = {
+    hostName = "acedia";
+
+    networkmanager = {
+      enable = true;
+      wifi.macAddress = "random";
+    };
+  };
+
   time.timeZone = "Europe/Zurich";
 
   nixpkgs = {
@@ -91,8 +99,6 @@
     earlySetup = true;
     useXkbConfig = true;
   };
-
-  networking.networkmanager.enable = true;
 
   location.provider = "geoclue2";
 
