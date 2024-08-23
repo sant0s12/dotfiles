@@ -33,6 +33,8 @@
     inkscape
     networkmanagerapplet
     libreoffice
+    ffmpeg
+    kdenlive
     killall
     playerctl
     zathura
