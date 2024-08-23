@@ -42,6 +42,8 @@
     swaybg
     tor-browser
     signal-desktop
+    slack
+    whatsapp-for-linux
     ferdium
     udiskie
     kubectl
