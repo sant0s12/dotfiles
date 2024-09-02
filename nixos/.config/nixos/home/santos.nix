@@ -20,6 +20,7 @@
     loupe
     rebuild
     discord
+    davinci-resolve
     android-studio
     tldr
     wdisplays

@@ -340,6 +340,7 @@
       ubuntu_font_family
       fira
       inter
+      raleway
     ];
 
     fontconfig = {
