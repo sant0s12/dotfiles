@@ -44,6 +44,7 @@
     inotify-tools
     swaybg
     tor-browser
+    segger-jlink
     signal-desktop
     ferdium
     udiskie
