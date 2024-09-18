@@ -207,8 +207,6 @@
     };
   };
 
-  security.pam.services.swaylock = { };
-
   security.sudo = {
     package = pkgs.sudo.override { withInsults = true; };
 
