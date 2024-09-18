@@ -88,8 +88,8 @@
       listener = [
         {
           timeout = 5;
-          on-timeout = "xbacklight -steps 200 -time 2000 -set 1";
-          on-resume = "killall xbacklight && xbacklight -set 100";
+          on-timeout = "xbacklight -get > /tmp/backlight.bak && xbacklight -set 1";
+          on-resume = "xbacklight -set $(cat /tmp/backlight.bak)";
         }
         {
           timeout = 300;
