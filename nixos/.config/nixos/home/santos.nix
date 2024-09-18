@@ -87,7 +87,7 @@
 
       listener = [
         {
-          timeout = 150;
+          timeout = 5;
           on-timeout = "xbacklight -steps 200 -time 2000 -set 1";
           on-resume = "killall xbacklight && xbacklight -set 100";
         }
@@ -96,8 +96,13 @@
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 300;
-          on-timeout = "loginctl lock-session";
+          timeout = 330;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 600;
+          on-timeout = "systemctl hybrid-sleep";
         }
       ];
     };
