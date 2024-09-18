@@ -159,6 +159,8 @@
     xwayland.enable = true;
   };
 
+  programs.hyprlock.enable = true;
+
   xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
   xdg.mime.defaultApplications = {

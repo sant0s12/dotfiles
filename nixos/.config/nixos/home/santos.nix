@@ -54,7 +54,6 @@
     mpv
     gammastep
     file
-    hyprlock
     dunst
     ripgrep
     capitaine-cursors
