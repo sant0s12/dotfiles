@@ -54,8 +54,6 @@
     mpv
     gammastep
     file
-    swayidle
-    swaylock
     hyprlock
     dunst
     ripgrep
