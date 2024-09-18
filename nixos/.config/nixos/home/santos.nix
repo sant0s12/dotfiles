@@ -75,6 +75,26 @@
     fluxcd
   ];
 
+  services.hypridle = {
+    enable = true;
+
+    settings = {
+      general = {
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        lock_cmd = "lockscreen";
+      };
+
+      listener = [
+        {
+          timeout = 150;
+          on-timeout = "xbacklight -steps 200 -time 2000 -set 1";
+          on-resume = "xbacklight -set 100";
+        }
+      ];
+    };
+  };
+
   dconf = {
     enable = true;
     settings = {
