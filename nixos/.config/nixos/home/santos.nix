@@ -87,9 +87,17 @@
 
       listener = [
         {
-          timeout = 5;
+          timeout = 150;
           on-timeout = "xbacklight -steps 200 -time 2000 -set 1";
-          on-resume = "xbacklight -set 100";
+          on-resume = "killall xbacklight && xbacklight -set 100";
+        }
+        {
+          timeout = 300;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 300;
+          on-timeout = "loginctl lock-session";
         }
       ];
     };
