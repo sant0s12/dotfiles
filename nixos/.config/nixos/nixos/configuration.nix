@@ -82,10 +82,7 @@
         description = "Swiss German QWERTY Layout";
         languages = [ "de" ];
         symbolsFile = builtins.fetchurl {
-          url = ''
-            https://gist.githubusercontent.com/sant0s12/
-                          9506659fbb86cbb25419a7856e0cf5a2/raw/
-                          9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty'';
+          url = ''https://gist.githubusercontent.com/sant0s12/9506659fbb86cbb25419a7856e0cf5a2/raw/9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty'';
           sha256 = "39a84dc8f1bde46bff21929b97e8f8da5ad10b4853257c468ca464f452c4500b";
         };
       };
@@ -235,72 +232,72 @@
     ];
   };
 
-  # Secrets
-  age.secrets.borgpass.file = ../secrets/borgpass.age;
-
-  services.borgbackup.jobs."home-var-etc" = {
-    paths = [
-      "/var/lib"
-      "/home"
-      "/etc/NetworkManager"
-      "/etc/ssh"
-    ];
-
-    exclude = [
-      # very large paths
-      "/var/lib/docker"
-      "/var/lib/systemd"
-      "/var/lib/libvirt"
-
-      # temporary files created by cargo and `go build`
-      "**/target"
-      "/home/*/go/bin"
-      "/home/*/go/pkg"
-      "*.pyc"
-      "/home/*/.cache"
-      "*/.vim*.tmp"
-      "*.tmp"
-      "*cache*"
-      ".mozilla"
-      ".rustup"
-      "*/Downloads"
-      "*.cargo"
-    ];
-
-    prune.keep = {
-      within = "1d"; # Keep all archives from the last day
-      daily = 7;
-      weekly = 4;
-      monthly = -1; # Keep at least one archive for each month
-    };
-
-    repo = "ssh://borg@fileserver.lan.santos.party/mnt/storage/backups/acedia";
-
-    encryption = {
-      mode = "repokey-blake2";
-      passCommand = "cat ${config.age.secrets.borgpass.path}";
-    };
-
-    environment = {
-      BORG_RSH = "ssh -i /etc/ssh/ssh_host_ed25519_key";
-    };
-
-    extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
-    compression = "auto,zstd";
-    startAt = "daily";
-    inhibitsSleep = true;
-    preHook = ''
-      ${lib.getExe pkgs.retry} -d 5 -t 5 ${config.system.path}/bin/ping -c 1 -q pi.lan.santos.party \
-      || (echo "Failed to reach backup server" && exit 1)
-    '';
-    extraUnitConfig = {
-      ConditionACPower = true;
-      After = "network-online.target";
-    };
-    extraTimerConfig = {
-      WakeSystem = true;
-    };
-  };
+  # # Secrets
+  # age.secrets.borgpass.file = ../secrets/borgpass.age;
+  #
+  # services.borgbackup.jobs."home-var-etc" = {
+  #   paths = [
+  #     "/var/lib"
+  #     "/home"
+  #     "/etc/NetworkManager"
+  #     "/etc/ssh"
+  #   ];
+  #
+  #   exclude = [
+  #     # very large paths
+  #     "/var/lib/docker"
+  #     "/var/lib/systemd"
+  #     "/var/lib/libvirt"
+  #
+  #     # temporary files created by cargo and `go build`
+  #     "**/target"
+  #     "/home/*/go/bin"
+  #     "/home/*/go/pkg"
+  #     "*.pyc"
+  #     "/home/*/.cache"
+  #     "*/.vim*.tmp"
+  #     "*.tmp"
+  #     "*cache*"
+  #     ".mozilla"
+  #     ".rustup"
+  #     "*/Downloads"
+  #     "*.cargo"
+  #   ];
+  #
+  #   prune.keep = {
+  #     within = "1d"; # Keep all archives from the last day
+  #     daily = 7;
+  #     weekly = 4;
+  #     monthly = -1; # Keep at least one archive for each month
+  #   };
+  #
+  #   repo = "ssh://borg@fileserver.lan.santos.party/mnt/storage/backups/acedia";
+  #
+  #   encryption = {
+  #     mode = "repokey-blake2";
+  #     passCommand = "cat ${config.age.secrets.borgpass.path}";
+  #   };
+  #
+  #   environment = {
+  #     BORG_RSH = "ssh -i /etc/ssh/ssh_host_ed25519_key";
+  #   };
+  #
+  #   extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
+  #   compression = "auto,zstd";
+  #   startAt = "daily";
+  #   inhibitsSleep = true;
+  #   preHook = ''
+  #     ${lib.getExe pkgs.retry} -d 5 -t 5 ${config.system.path}/bin/ping -c 1 -q pi.lan.santos.party \
+  #     || (echo "Failed to reach backup server" && exit 1)
+  #   '';
+  #   extraUnitConfig = {
+  #     ConditionACPower = true;
+  #     After = "network-online.target";
+  #   };
+  #   extraTimerConfig = {
+  #     WakeSystem = true;
+  #   };
+  # };
 
   programs.neovim = {
     enable = true;

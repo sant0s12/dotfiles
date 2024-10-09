@@ -116,20 +116,24 @@
     };
   };
 
-  xdg.mimeApps = {
-    enable = true;
+  xdg = {
+    mimeApps = {
+      enable = true;
 
-    defaultApplications = {
-      "application/pdf" = [ "org.gnome.Evince.desktop" ];
-      "image/png" = [ "org.gnome.Loupe.desktop" ];
-      "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
-      "image/gif" = [ "org.gnome.Loupe.desktop" ];
-      "image/bmp" = [ "org.gnome.Loupe.desktop" ];
-      "image/svg+xml" = [
-        "org.gnome.Loupe.desktop"
-        "org.inkscape.Inkscape.desktop"
-      ];
+      defaultApplications = {
+        "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "image/png" = [ "org.gnome.Loupe.desktop" ];
+        "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "image/gif" = [ "org.gnome.Loupe.desktop" ];
+        "image/bmp" = [ "org.gnome.Loupe.desktop" ];
+        "image/svg+xml" = [
+          "org.gnome.Loupe.desktop"
+          "org.inkscape.Inkscape.desktop"
+        ];
+      };
     };
+
+    configFile."mimeapps.list".force = true;
   };
 
   qt = {
