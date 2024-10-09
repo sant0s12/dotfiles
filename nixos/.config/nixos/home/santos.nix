@@ -9,6 +9,8 @@
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
+    ghostscript
+    imagemagick
     android-studio
     atool
     bat

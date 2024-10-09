@@ -3,19 +3,19 @@
 while getopts ":x:c:" opt; do
 	case $opt in
 		x)
-			EXECUTE=$OPTARG
-			CLASS=$OPTARG
+			EXECUTE="$OPTARG"
+			CLASS="$OPTARG"
 			;;
 		c)
-			CLASS=$OPTARG
+			CLASS="$OPTARG"
 			;;
 	esac
 done
 
 if [ "$#" -lt 1 ]; then exit 1; fi
 
-if [ "$(echo $(hyprctl -j clients | jq -r '.[] | (.class)') | grep -oP $CLASS)" ]; then
-	hyprctl dispatch focuswindow $CLASS
+if [ "$(echo $(hyprctl -j clients | jq -r '.[] | (.class)') | grep -oP "$CLASS")" ]; then
+	hyprctl dispatch focuswindow "$CLASS"
 else
-	exec $EXECUTE
+	exec "$EXECUTE"
 fi
