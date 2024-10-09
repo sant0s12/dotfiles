@@ -9,69 +9,70 @@
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
-    btop
-    bat
-    gimp
-    jq
-    kitty
-    trash-cli
-    hexchat
-    ladybird
-    loupe
-    rebuild
-    discord
-    davinci-resolve
     android-studio
-    tldr
-    wdisplays
-    k9s
-    waybar
-    python3
-    stow
-    sipctl
-    xdragon
-    unzip
-    inkscape
-    networkmanagerapplet
-    libreoffice
+    atool
+    bat
+    btop
+    capitaine-cursors
+    ctpv
+    davinci-resolve
+    discord
+    dunst
+    evince
+    ferdium
     ffmpeg
+    file
+    fluxcd
+    gammastep
+    gimp
+    grim
+    hexchat
+    inkscape
+    inotify-tools
+    jellyfin-media-player
+    jq
+    k9s
     kdenlive
     killall
-    playerctl
-    zathura
-    evince
-    atool
-    inotify-tools
-    swaybg
-    tor-browser
-    segger-jlink
-    signal-desktop
-    ferdium
-    udiskie
+    kitty
     kubectl
     kubernetes-helm
-    owncloud-client
-    mpv
-    gammastep
-    file
-    dunst
-    ripgrep
-    capitaine-cursors
-    rofi-wayland
-    libinput-gestures
-    jellyfin-media-player
-    neofetch
+    ladybird
     lf
-    ctpv
-    swayosd
+    libinput-gestures
+    libreoffice
+    loupe
+    mpv
+    neofetch
+    networkmanagerapplet
+    owncloud-client
     pavucontrol
-    grim
+    playerctl
+    python3
+    rebuild
+    ripgrep
+    rofi-wayland
+    segger-jlink
+    signal-desktop
+    sipctl
     slurp
     spotify
-    wtype
+    stow
+    swaybg
+    swayosd
     thunderbird
+    tldr
+    tor-browser
+    trash-cli
+    udiskie
+    unzip
+    waybar
+    wdisplays
     wl-clipboard
-    fluxcd
+    wtype
+    xdragon
+    youtube-music
+    zathura
   ];
 
   services.hypridle = {
