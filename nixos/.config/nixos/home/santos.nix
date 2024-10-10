@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     ghostscript
+    acpilight
     imagemagick
     android-studio
     atool
