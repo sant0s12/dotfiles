@@ -88,7 +88,10 @@
       };
     };
 
-    udev.packages = with pkgs; [ segger-jlink ];
+    udev.packages = with pkgs; [
+      segger-jlink
+      nrf-udev
+    ];
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
