@@ -153,7 +153,7 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons' },
-		config = require('lualine').setup({ options = { theme = 'gruvbox' } })
+		config = function() require('lualine').setup({ options = { theme = 'gruvbox' } }) end
 	}
 
 	-- Automatically set up your configuration after cloning packer.nvim

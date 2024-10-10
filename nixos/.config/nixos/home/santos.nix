@@ -9,9 +9,8 @@
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
-    ghostscript
+    nrfconnect
     acpilight
-    imagemagick
     android-studio
     atool
     bat
@@ -27,9 +26,11 @@
     file
     fluxcd
     gammastep
+    ghostscript
     gimp
     grim
     hexchat
+    imagemagick
     inkscape
     inotify-tools
     jellyfin-media-player
