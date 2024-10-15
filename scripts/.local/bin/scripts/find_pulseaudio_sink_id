@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+profile_name="$1"
+
+# Get the list of sinks
+sinks=$(pactl list sinks short)
+
+# Loop through each sink to find the one with the specified profile name
+while IFS=$'\t' read -r sink_id sink_name; do
+	# Get the sink information
+	sink_info=$(pactl list sinks | grep -A 50 "Sink #$sink_id")
+
+	# Check if the sink has the desired profile name
+	if [[ $sink_info =~ "device.profile.name = \"$profile_name\"" ]]; then
+		echo "$sink_id"
+		exit 0
+	fi
+done <<< "$sinks"
+
+exit 1

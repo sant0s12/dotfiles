@@ -1,0 +1,8 @@
+#!/bin/sh
+
+prog=$1
+shift
+
+args=$*
+
+$TERMINAL -e "$prog" "$args"
