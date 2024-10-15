@@ -37,6 +37,7 @@
     jq
     k9s
     kdenlive
+    kicad
     killall
     kitty
     kubectl
