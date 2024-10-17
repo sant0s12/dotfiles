@@ -2,7 +2,6 @@
   inputs,
   outputs,
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -101,6 +100,16 @@
   };
 
   location.provider = "geoclue2";
+  services.geoclue2 = {
+    geoProviderUrl = "https://beacondb.net/v1/geolocate";
+
+    appConfig = {
+      gammastep = {
+        isAllowed = true;
+        isSystem = false;
+      };
+    };
+  };
 
   services.logind.lidSwitch = "hybrid-sleep";
 
@@ -121,13 +130,6 @@
         governor = "performance";
         turbo = "auto";
       };
-    };
-  };
-
-  services.geoclue2.appConfig = {
-    gammastep = {
-      isAllowed = true;
-      isSystem = false;
     };
   };
 
