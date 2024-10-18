@@ -17,6 +17,7 @@
 	verbose = true
 [safe]
 	directory = /opt/flutter
+	directory = /home/santos/mnt/wgzimmer-notify
 [push]
 	autoSetupRemote = true
 [gpg]
