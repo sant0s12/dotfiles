@@ -41,7 +41,8 @@
         "format": "{:%a %d %b}"
     },
     "clock": {
-        "format": "{:%I:%M %p}"
+        "format": "{:%H:%M}",
+		"tooltip": false
     },
     "cpu": {
         "format": "󰍛 {usage:3}%",

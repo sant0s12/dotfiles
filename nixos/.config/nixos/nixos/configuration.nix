@@ -196,6 +196,12 @@
 
   security.polkit.enable = true;
   systemd = {
+
+    # Fix for ROCm
+    tmpfiles.rules = [
+      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+    ];
+
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];
