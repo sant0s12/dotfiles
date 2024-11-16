@@ -51,7 +51,6 @@
     networkmanagerapplet
     nrfconnect
     owncloud-client
-    paperlib
     pavucontrol
     playerctl
     python3
