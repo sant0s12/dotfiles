@@ -9,7 +9,6 @@
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
-    nrfconnect
     acpilight
     android-studio
     atool
@@ -50,7 +49,9 @@
     mpv
     neofetch
     networkmanagerapplet
+    nrfconnect
     owncloud-client
+    paperlib
     pavucontrol
     playerctl
     python3
