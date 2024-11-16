@@ -78,6 +78,7 @@
     xdragon
     youtube-music
     zathura
+    zotero
   ];
 
   services.hypridle = {
