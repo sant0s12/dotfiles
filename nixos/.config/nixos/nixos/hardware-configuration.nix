@@ -19,7 +19,10 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "v4l2loopback"
+  ];
   boot.extraModulePackages = [ ];
 
   boot.initrd.systemd.enable = true;
