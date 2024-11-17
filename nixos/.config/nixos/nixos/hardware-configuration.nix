@@ -23,7 +23,8 @@
     "kvm-amd"
     "v4l2loopback"
   ];
-  boot.extraModulePackages = [ ];
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
   boot.initrd.systemd.enable = true;
 
