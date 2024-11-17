@@ -78,7 +78,7 @@
     xdragon
     youtube-music
     zathura
-    zoom
+    zoom-us
     zotero
   ];
 
