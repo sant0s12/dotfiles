@@ -7,6 +7,7 @@
 @define-color bg rgba(40, 40, 40, 0.9);
 @define-color bg2 rgba(70, 70, 70, 0.9);
 @define-color spotify-bg #1DB954;
+@define-color yt-music-bg #ff6060;
 @define-color fg #ffffff;
 @define-color red #fb4934;
 @define-color purple #d3869b;
@@ -118,11 +119,6 @@
 #mpris.playing {
     color: @bg;
     background: @fg;
-}
-
-#mpris.spotify.playing {
-    color: @fg;
-    background: @spotify-bg;
 }
 
 #upower {

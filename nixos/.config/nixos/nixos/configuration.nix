@@ -176,6 +176,7 @@
   programs.zsh = {
     enable = true;
     enableGlobalCompInit = false;
+    enableCompletion = false;
   };
   users.defaultUserShell = pkgs.zsh;
 
