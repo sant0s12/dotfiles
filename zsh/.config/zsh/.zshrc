@@ -38,8 +38,7 @@ zinit wait'!' lucid for \
 zinit wait lucid for \
 	atinit"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
 	atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
-	blockf atpull'zinit creinstall -q .' atinit"zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'" zsh-users/zsh-completions \
-	softmoth/zsh-vim-mode
+	blockf atpull'zinit creinstall -q .' atinit"zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'" zsh-users/zsh-completions
 
 unsetopt correct_all
 setopt correct
@@ -61,7 +60,8 @@ git() {
   fi
 }
 
-bindkey "''${key[Up]}" up-line-or-search
+bindkey "${key[Up]}" history-beginning-search-backward
+bindkey "${key[Down]}" history-beginning-search-forward
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitten ssh"
 
