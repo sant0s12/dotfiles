@@ -176,8 +176,8 @@
   programs.zsh = {
     enable = true;
     enableGlobalCompInit = false;
-    enableCompletion = false;
   };
+
   users.defaultUserShell = pkgs.zsh;
 
   programs.direnv.enable = true;
@@ -355,6 +355,7 @@
     fontconfig = {
       defaultFonts = {
         sansSerif = [ "Fira Sans" ];
+        emoji = [ "JoyPixels" ];
       };
     };
   };
