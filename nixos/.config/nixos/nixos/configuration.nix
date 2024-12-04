@@ -345,7 +345,6 @@
       nerdfonts
       inconsolata
       comic-mono
-      joypixels
       ubuntu_font_family
       fira
       inter
@@ -356,7 +355,7 @@
     fontconfig = {
       defaultFonts = {
         sansSerif = [ "Fira Sans" ];
-        emoji = [ "JoyPixels" ];
+        emoji = [ "Apple Color Emoji" ]; # WhatsApp Emoji Font
       };
     };
   };
