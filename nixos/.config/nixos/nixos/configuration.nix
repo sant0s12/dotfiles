@@ -350,6 +350,7 @@
       fira
       inter
       raleway
+      whatsapp-emoji-font
     ];
 
     fontconfig = {
