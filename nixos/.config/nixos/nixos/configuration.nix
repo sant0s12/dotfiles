@@ -11,6 +11,8 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.rtl-sdr.enable = true;
+
   virtualisation.docker.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -90,7 +92,6 @@
     udev.packages = with pkgs; [
       segger-jlink
       nrf-udev
-      rtl-sdr
     ];
   };
 
@@ -242,6 +243,7 @@
       "input"
       "video"
       "dialout"
+      "plugdev"
     ];
   };
 
@@ -336,8 +338,6 @@
     inputs.agenix.packages.${system}.default
     nixfmt-rfc-style
     nfs-utils
-    rtl-sdr
-    gnuradioPackages.osmosdr
     pulseaudio # for pactl
   ];
 
