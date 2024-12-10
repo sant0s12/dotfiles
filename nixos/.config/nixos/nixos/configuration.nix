@@ -335,6 +335,8 @@
     inputs.agenix.packages.${system}.default
     nixfmt-rfc-style
     nfs-utils
+    rtl-sdr
+    gnuradioPackages.osmosdr
     pulseaudio # for pactl
   ];
 
