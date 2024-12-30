@@ -92,6 +92,7 @@
     udev.packages = with pkgs; [
       segger-jlink
       nrf-udev
+      android-udev-rules
     ];
   };
 
@@ -244,6 +245,7 @@
       "video"
       "dialout"
       "plugdev"
+      "adbusers"
     ];
   };
 
