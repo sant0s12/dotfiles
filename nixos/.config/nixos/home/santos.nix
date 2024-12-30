@@ -24,6 +24,7 @@
     ffmpeg
     file
     fluxcd
+    sparrow
     gammastep
     ghostscript
     gimp
@@ -38,6 +39,7 @@
     kdenlive
     kicad
     killall
+    syncthing
     kitty
     kubectl
     kubernetes-helm
