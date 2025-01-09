@@ -41,7 +41,7 @@
       allowUnfree = true;
       joypixels.acceptLicense = true;
 
-      permittedInsecurePackages = [ "segger-jlink-qt4-796s" ];
+      permittedInsecurePackages = [ "segger-jlink-qt4-810" ];
       segger-jlink.acceptLicense = true;
     };
   };
@@ -347,7 +347,10 @@
     enableDefaultPackages = true;
 
     packages = with pkgs; [
-      nerdfonts
+      pkgs.nerd-fonts.noto
+      pkgs.nerd-fonts.inconsolata
+      pkgs.nerd-fonts.hack
+      pkgs.nerd-fonts.sauce-code-pro
       inconsolata
       comic-mono
       ubuntu_font_family

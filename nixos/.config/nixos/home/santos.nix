@@ -37,7 +37,6 @@
     jq
     k9s
     kdenlive
-    kicad
     killall
     syncthing
     kitty
@@ -61,7 +60,6 @@
     rofi-wayland
     segger-jlink
     signal-desktop
-    sipctl
     slurp
     spotify
     stow
@@ -69,7 +67,6 @@
     swayosd
     thunderbird
     tldr
-    tor-browser
     trash-cli
     udiskie
     unzip
