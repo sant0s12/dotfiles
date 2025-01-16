@@ -335,7 +335,10 @@
   # virt-manager
   programs.virt-manager.enable = true;
   users.groups.libvirt.members = [ "santos" ];
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+  };
   virtualisation.spiceUSBRedirection.enable = true;
 
   environment.systemPackages = with pkgs; [
