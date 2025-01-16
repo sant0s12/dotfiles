@@ -15,7 +15,7 @@ done
 if [ "$#" -lt 1 ]; then exit 1; fi
 
 if [ "$(echo $(hyprctl -j clients | jq -r '.[] | (.class)') | grep -oP "$CLASS")" ]; then
-	hyprctl dispatch focuswindow "$CLASS"
+	hyprctl dispatch focuswindow "class:$CLASS"
 else
 	exec "$EXECUTE"
 fi

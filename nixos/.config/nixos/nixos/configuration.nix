@@ -332,6 +332,12 @@
     ];
   };
 
+  # virt-manager
+  programs.virt-manager.enable = true;
+  users.groups.libvirt.members = [ "santos" ];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
   environment.systemPackages = with pkgs; [
     wget
     git
