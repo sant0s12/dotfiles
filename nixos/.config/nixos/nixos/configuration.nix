@@ -341,6 +341,9 @@
   };
   virtualisation.spiceUSBRedirection.enable = true;
 
+  # Freeze workaround when suspending if VM is running
+  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+
   environment.systemPackages = with pkgs; [
     wget
     git
