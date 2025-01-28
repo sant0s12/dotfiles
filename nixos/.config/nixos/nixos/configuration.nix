@@ -352,6 +352,7 @@
     inputs.agenix.packages.${system}.default
     nixfmt-rfc-style
     nfs-utils
+    gparted
     pulseaudio # for pactl
   ];
 
