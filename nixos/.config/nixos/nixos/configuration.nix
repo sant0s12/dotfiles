@@ -371,6 +371,7 @@
       inter
       raleway
       whatsapp-emoji-font
+      texlivePackages.cm
     ];
 
     fontconfig = {
