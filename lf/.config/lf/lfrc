@@ -25,7 +25,7 @@ set info size
 
 set dircounts
 
-set period 1
+set watch true
 
 # set cursorpreviewfmt "\033[7;90m"
 

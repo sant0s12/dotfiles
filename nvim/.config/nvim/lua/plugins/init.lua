@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
 		config = get_config("telescope")
 	}
 
-	use { 'lervag/vimtex', config = get_config("vimtex") }
+	use { 'lervag/vimtex', requires = { 'peterbjorgensen/sved' }, config = get_config("vimtex") }
 	use { 'vim-pandoc/vim-pandoc' }
 	use 'dhruvasagar/vim-table-mode'
 	use 'chrisbra/csv.vim'

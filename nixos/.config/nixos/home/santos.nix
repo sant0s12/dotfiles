@@ -81,6 +81,10 @@
     zotero
   ];
 
+  programs.neovim.plugins = [
+    pkgs.vimPlugins.nvim-treesitter
+  ];
+
   services.hypridle = {
     enable = true;
 
