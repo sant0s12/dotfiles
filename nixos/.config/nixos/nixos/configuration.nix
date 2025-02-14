@@ -93,6 +93,7 @@
     };
 
     udev.packages = with pkgs; [
+      openocd
       segger-jlink
       nrf-udev
       android-udev-rules
