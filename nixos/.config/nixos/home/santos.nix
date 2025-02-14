@@ -81,13 +81,6 @@
     zotero
   ];
 
-  programs.neovim = {
-    enable = true;
-    plugins = [
-      pkgs.vimPlugins.nvim-treesitter
-    ];
-  };
-
   services.hypridle = {
     enable = true;
 
@@ -144,6 +137,7 @@
           "org.gnome.Loupe.desktop"
           "org.inkscape.Inkscape.desktop"
         ];
+        "inode/directory" = [ "lf.desktop" ];
       };
     };
 
