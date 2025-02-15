@@ -372,7 +372,7 @@
       inter
       raleway
       whatsapp-emoji-font
-      texlivePackages.cm
+      cm_unicode
     ];
 
     fontconfig = {
