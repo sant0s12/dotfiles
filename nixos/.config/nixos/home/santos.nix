@@ -9,6 +9,7 @@
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
+    vlc
     acpilight
     android-studio
     atool
@@ -24,7 +25,6 @@
     ffmpeg
     file
     fluxcd
-    sparrow
     gammastep
     ghostscript
     gimp
@@ -38,7 +38,6 @@
     k9s
     kdenlive
     killall
-    syncthing
     kitty
     kubectl
     kubernetes-helm
@@ -61,10 +60,12 @@
     segger-jlink
     signal-desktop
     slurp
+    sparrow
     spotify
     stow
     swaybg
     swayosd
+    syncthing
     thunderbird
     tldr
     trash-cli
