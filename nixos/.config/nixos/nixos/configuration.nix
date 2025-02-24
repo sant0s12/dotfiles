@@ -140,6 +140,8 @@
     };
   };
 
+  services.thermald.enable = true;
+
   services.tlp.enable = false;
 
   # I think this is needed for age
