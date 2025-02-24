@@ -140,6 +140,8 @@
     };
   };
 
+  services.tlp.enable = false;
+
   # I think this is needed for age
   services.openssh = {
     enable = true;
