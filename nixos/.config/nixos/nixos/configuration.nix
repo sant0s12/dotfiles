@@ -133,9 +133,9 @@
         governor = "powersave";
         turbo = "always";
 
-        enable_thresholds = "true";
-        start_threshold = "80";
-        stop_threshold = "90";
+        enable_thresholds = true;
+        start_threshold = 80;
+        stop_threshold = 90;
       };
       charger = {
         governor = "performance";
