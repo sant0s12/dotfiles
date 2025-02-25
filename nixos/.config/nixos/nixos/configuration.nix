@@ -118,7 +118,7 @@
     };
   };
 
-  services.logind.lidSwitch = "hybrid-sleep";
+  services.logind.lidSwitch = "suspend-then-hibernate";
 
   # Services
   services.upower.enable = true;

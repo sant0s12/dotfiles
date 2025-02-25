@@ -40,6 +40,9 @@ zinit wait lucid for \
 	atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
 	blockf atpull'zinit creinstall -q .' atinit"zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'" zsh-users/zsh-completions
 
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 unsetopt correct_all
 setopt correct
 
