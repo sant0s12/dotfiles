@@ -36,7 +36,7 @@
     jellyfin-media-player
     jq
     k9s
-    kdenlive
+    kdePackages.kdenlive
     killall
     kitty
     kubectl
@@ -113,6 +113,14 @@
         }
       ];
     };
+  };
+
+  services.batsignal = {
+    enable = true;
+    extraArgs = [
+      "-e"
+      "-p"
+    ];
   };
 
   dconf = {

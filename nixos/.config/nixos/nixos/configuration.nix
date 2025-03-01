@@ -50,6 +50,7 @@
   };
 
   nix = {
+    package = pkgs.nixVersions.latest;
     optimise.automatic = true;
 
     settings = {
