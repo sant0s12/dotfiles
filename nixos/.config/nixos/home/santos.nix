@@ -19,6 +19,7 @@
     ctpv
     davinci-resolve
     discord
+    sshfs
     dunst
     evince
     ferdium
@@ -51,6 +52,7 @@
     networkmanagerapplet
     nrfconnect
     owncloud-client
+    nextcloud-client
     pavucontrol
     playerctl
     python3

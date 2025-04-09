@@ -25,7 +25,7 @@
 #waybar {
     background: @bg;
     color: @fg;
-    font-family: Inconsolata, Symbols Nerd Font;
+    font-family: Inconsolata, SauceCodePro Nerd Font Mono;
     font-size: 12px;
     border-radius: 0px;
 }
@@ -43,6 +43,8 @@
 #custom-alsa,
 #custom-pacman,
 #custom-weather,
+#custom-counter,
+#custom-trash,
 #custom-gpu,
 #tray,
 #backlight,

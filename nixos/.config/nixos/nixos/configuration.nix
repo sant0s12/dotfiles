@@ -126,6 +126,7 @@
   services.udisks2.enable = true;
   services.blueman.enable = true;
   services.rpcbind.enable = true;
+  services.fwupd.enable = true;
 
   services.auto-cpufreq = {
     enable = true;
@@ -176,6 +177,8 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.hyprlock.enable = true;
 
@@ -353,6 +356,14 @@
     qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   };
   virtualisation.spiceUSBRedirection.enable = true;
+
+  # Nix-ld
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     wget

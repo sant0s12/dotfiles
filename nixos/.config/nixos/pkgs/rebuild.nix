@@ -4,8 +4,8 @@ pkgs.writeShellApplication {
 
   # Based on https://github.com/0atman/noboilerplate/blob/main/scripts/38-nixos.md#dont-use-nix-env
   text = ''
-    pushd "$NIXOS_CONFIG_DIR" > /dev/null
-    nix fmt &> /dev/null
+    pushd "$NIXOS_CONFIG_DIR"
+    nix fmt
     find . -name '*.nix' | git diff -U0
 
     echo "Rebuilding NixOS..."
@@ -18,6 +18,6 @@ pkgs.writeShellApplication {
 
     echo "Rebuilt NixOS generation $generation $extra"
     git commit -am "NixOS gen. $generation - $extra"
-    popd > /dev/null
+    popd
   '';
 }

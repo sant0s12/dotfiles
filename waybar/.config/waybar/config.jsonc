@@ -6,12 +6,12 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["clock#date", "clock", "custom/weather"],
-    "modules-right": ["custom/trash", "idle_inhibitor", "disk", "backlight", "pulseaudio#sink", "pulseaudio#source", "memory", "cpu", "upower", "tray"],
+    "modules-right": ["custom/counter", "custom/trash", "idle_inhibitor", "disk", "backlight", "pulseaudio#sink", "pulseaudio#source", "memory", "cpu", "upower", "tray"],
 
     "hyprland/workspaces": {
       "format": "{icon}",
       "format-icons": {
-          "1": "󰋜",
+          "1": "<span size='100%'>󰋜</span>",
           "2": "2",
           "3": "3",
           "4": "4",
@@ -127,5 +127,12 @@
         "on-click": "$EXPLORER $TRASH",
         "on-click-right": "trash-empty -f ; pkill -x -SIGRTMIN+9 waybar",
         "signal": 9
-    }
+    },
+	"custom/counter": {
+		"format": " {}",
+		"exec": "cat $XDG_CACHE_HOME/counter",
+		"on-click": "echo $(( $(cat $XDG_CACHE_HOME/counter) + 1 )) > $XDG_CACHE_HOME/counter",
+		"on-click-right": "echo 0 > $XDG_CACHE_HOME/counter",
+		"interval": "once",
+	}
 }

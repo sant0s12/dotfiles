@@ -63,6 +63,10 @@ git() {
   fi
 }
 
+flatten_pdf() {
+  inkscape "$1" --export-type pdf --export-filename "$1"
+}
+
 bindkey "${key[Up]}" history-beginning-search-backward
 bindkey "${key[Down]}" history-beginning-search-forward
 

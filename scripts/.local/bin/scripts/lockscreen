@@ -7,7 +7,7 @@ dunstctl set-paused true # pause dunst
 # mute speakers
 pactl set-sink-mute "$(find_pulseaudio_sink_id analog-stereo)" true
 
-pidof hyprlock > /dev/null || hyprlock >> /tmp/lockscreen.log 2>&1
+pidof hyprlock > /dev/null || hyprlock 2>&1
 
 # wait for swaylock to finish
 wait $!
