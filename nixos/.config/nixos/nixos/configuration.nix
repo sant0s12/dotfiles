@@ -81,6 +81,11 @@
     xserver = {
       enable = false;
 
+      # GNOME
+      displayManager.gdm.enable = true;
+      displayManager.gdm.wayland = true;
+      desktopManager.gnome.enable = true;
+
       xkb.layout = "ch-qwerty";
       xkb.options = "caps:swapescape";
       xkb.extraLayouts.ch-qwerty = {
@@ -150,6 +155,8 @@
 
   services.tlp.enable = false;
 
+  services.power-profiles-daemon.enable = false;
+
   # I think this is needed for age
   services.openssh = {
     enable = true;
@@ -176,6 +183,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

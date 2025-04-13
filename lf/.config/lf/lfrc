@@ -66,7 +66,7 @@ map . set hidden!
 map w #unmap shell to w
 map S $$SHELL
 
-map D &dragon -a $fx # Dragon drag and drop
+map D &dragon-drop -a $fx # Dragon drag and drop
 map C &cat $f | xclip -selection clipboard # Copy contents of file to clipboard
 
 map t :tag-toggle ""; down
