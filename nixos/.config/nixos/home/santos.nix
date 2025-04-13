@@ -51,7 +51,6 @@
     neofetch
     networkmanagerapplet
     nrfconnect
-    owncloud-client
     nextcloud-client
     pavucontrol
     playerctl
