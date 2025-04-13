@@ -114,6 +114,7 @@
 
   location.provider = "geoclue2";
   services.geoclue2 = {
+    enable = true;
     geoProviderUrl = "https://beacondb.net/v1/geolocate";
 
     appConfig = {
@@ -132,6 +133,8 @@
   services.blueman.enable = true;
   services.rpcbind.enable = true;
   services.fwupd.enable = true;
+
+  services.dbus.implementation = "broker";
 
   services.auto-cpufreq = {
     enable = true;
