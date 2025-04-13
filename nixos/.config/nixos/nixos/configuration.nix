@@ -13,7 +13,11 @@
 
   hardware.rtl-sdr.enable = true;
 
-  virtualisation.docker.enable = true;
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
