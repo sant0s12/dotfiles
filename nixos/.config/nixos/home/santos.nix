@@ -79,7 +79,7 @@
     xdragon
     youtube-music
     zathura
-    zoom-us
+    flatpak
     zotero
   ];
 
