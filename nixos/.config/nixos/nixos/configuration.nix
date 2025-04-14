@@ -88,7 +88,8 @@
       # GNOME
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = true;
-      desktopManager.gnome.enable = true;
+
+      displayManager.sessionPackages = with pkgs; [ gnome-session.sessions ];
 
       xkb.layout = "ch-qwerty";
       xkb.options = "caps:swapescape";
