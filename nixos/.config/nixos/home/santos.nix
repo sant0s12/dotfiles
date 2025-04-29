@@ -40,6 +40,7 @@
     kdePackages.kdenlive
     killall
     kitty
+    ghostty
     kubectl
     kubernetes-helm
     ladybird
