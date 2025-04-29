@@ -7,7 +7,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 export TRASH=$XDG_DATA_HOME/Trash
 
-export TERMINAL=kitty
+export TERMINAL=ghostty
 export BROWSER=firefox
 export EDITOR=nvim
 export EXPLORER="$TERMINAL -e lf"

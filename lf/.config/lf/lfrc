@@ -29,10 +29,7 @@ set watch true
 
 # set cursorpreviewfmt "\033[7;90m"
 
-set previewer ctpv
-set cleaner ctpvclear
-&ctpv -s $id
-&ctpvquit $id
+set previewer pistol
 
 # use enter for shell commands
 map <enter> shell
