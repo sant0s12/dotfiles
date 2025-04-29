@@ -16,7 +16,7 @@
     bat
     btop
     capitaine-cursors
-    pistol
+    ctpv
     davinci-resolve
     discord
     sshfs
