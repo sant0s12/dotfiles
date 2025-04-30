@@ -11,13 +11,11 @@
   home.packages = with pkgs; [
     vlc
     acpilight
-    android-studio
     atool
     bat
     btop
     capitaine-cursors
     ctpv
-    davinci-resolve
     discord
     sshfs
     dunst
@@ -63,7 +61,6 @@
     signal-desktop
     slurp
     sparrow
-    spotify
     stow
     swaybg
     swayosd
