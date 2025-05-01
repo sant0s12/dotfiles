@@ -26,7 +26,7 @@
     fluxcd
     gammastep
     ghostscript
-    gimp
+    gimp3
     grim
     hexchat
     imagemagick
