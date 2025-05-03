@@ -82,14 +82,14 @@
   };
 
   services = {
+    displayManager.sessionPackages = with pkgs; [ gnome-session.sessions ];
+
     xserver = {
       enable = false;
 
       # GNOME
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = true;
-
-      displayManager.sessionPackages = with pkgs; [ gnome-session.sessions ];
 
       xkb.layout = "ch-qwerty";
       xkb.options = "caps:swapescape";
