@@ -161,6 +161,8 @@
 
   services.tlp.enable = false;
 
+  services.auto-epp.enable = true;
+
   services.power-profiles-daemon.enable = false;
 
   # I think this is needed for age
