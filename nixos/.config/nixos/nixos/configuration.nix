@@ -159,8 +159,6 @@
     };
   };
 
-  services.thermald.enable = true;
-
   services.tlp.enable = false;
 
   services.power-profiles-daemon.enable = false;
