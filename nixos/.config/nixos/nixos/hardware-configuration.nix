@@ -23,6 +23,8 @@
     "kvm-amd"
   ];
 
+  boot.kernelParams = [ "amd_pstate=active" ];
+
   boot.extraModulePackages = with config.boot.kernelPackages; [ ];
 
   boot.initrd.systemd.enable = true;
