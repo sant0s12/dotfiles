@@ -37,7 +37,6 @@
     k9s
     kdePackages.kdenlive
     killall
-    kitty
     ghostty
     kubectl
     kubernetes-helm

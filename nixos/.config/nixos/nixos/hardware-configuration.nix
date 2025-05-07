@@ -10,7 +10,6 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
-    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
   ];
 
   boot.initrd.availableKernelModules = [
