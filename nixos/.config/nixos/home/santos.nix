@@ -42,6 +42,7 @@
     kubernetes-helm
     ladybird
     lf
+    yazi
     libinput-gestures
     libreoffice
     loupe
