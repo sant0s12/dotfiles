@@ -4,8 +4,8 @@
 
 /* COLORS */
 
-@define-color bg rgba(40, 40, 40, 0.9);
-@define-color bg2 rgba(70, 70, 70, 0.9);
+@define-color bg rgba(40, 40, 40, 0.8);
+@define-color bg2 rgba(70, 70, 70, 0.8);
 @define-color spotify-bg #1DB954;
 @define-color yt-music-bg #ff6060;
 @define-color fg #ffffff;

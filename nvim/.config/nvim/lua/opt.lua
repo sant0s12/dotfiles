@@ -12,9 +12,10 @@ vim.opt.ignorecase		= true
 vim.opt.smartcase 		= true
 vim.opt.showmatch 		= false
 
-vim.opt.backup 			= false
-vim.opt.swapfile		= false
 vim.opt.undofile 		= true
+vim.opt.backupcopy		= "yes"
+vim.opt.dir             = "/tmp//"
+vim.opt.backupdir       = "/tmp//"
 
 vim.opt.termguicolors 	= true
 

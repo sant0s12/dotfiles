@@ -413,6 +413,8 @@
       raleway
       whatsapp-emoji-font
       cm_unicode
+      corefonts
+      vistafonts
     ];
 
     fontconfig = {
