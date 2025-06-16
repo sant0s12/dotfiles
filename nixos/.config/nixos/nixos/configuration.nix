@@ -415,6 +415,7 @@
       cm_unicode
       corefonts
       vistafonts
+      roboto
     ];
 
     fontconfig = {
