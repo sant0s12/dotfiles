@@ -422,6 +422,7 @@
     fontconfig = {
       defaultFonts = {
         sansSerif = [ "Fira Sans" ];
+        emoji = [ "Apple Color Emoji" ]; # WhatsApp Emoji Font
       };
     };
   };
