@@ -399,6 +399,7 @@
 
   fonts = {
     enableDefaultPackages = true;
+    fontDir.enable = true;
 
     packages = with pkgs; [
       pkgs.nerd-fonts.noto
@@ -421,7 +422,6 @@
     fontconfig = {
       defaultFonts = {
         sansSerif = [ "Fira Sans" ];
-        emoji = [ "Apple Color Emoji" ]; # WhatsApp Emoji Font
       };
     };
   };
