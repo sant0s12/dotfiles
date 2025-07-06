@@ -25,7 +25,7 @@
 
   # Hopwfully fix backlight issues
   boot.kernelParams = [
-    "amdgpu.abmlevel=0"
+    "amdgpu.backlight=0"
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ ];
