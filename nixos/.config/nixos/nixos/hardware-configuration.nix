@@ -23,6 +23,11 @@
     "kvm-amd"
   ];
 
+  # Hopwfully fix backlight issues
+  boot.kernelParams = [
+    "amdgpu.abmlevel=0"
+  ];
+
   boot.extraModulePackages = with config.boot.kernelPackages; [ ];
 
   boot.initrd.systemd.enable = true;

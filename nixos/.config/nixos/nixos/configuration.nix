@@ -412,8 +412,8 @@
       fira
       inter
       raleway
-      whatsapp-emoji-font
       cm_unicode
+      whatsapp-emoji-font
       corefonts
       vistafonts
       roboto
