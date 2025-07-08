@@ -18,14 +18,9 @@
     "usb_storage"
     "sd_mod"
   ];
-  # boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [
     "kvm-amd"
-  ];
-
-  # Hopwfully fix backlight issues
-  boot.kernelParams = [
-    "amdgpu.backlight=0"
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ ];
