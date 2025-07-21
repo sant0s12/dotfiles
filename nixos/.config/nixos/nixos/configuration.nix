@@ -55,13 +55,13 @@
 
   nix = {
     package = pkgs.nixVersions.latest;
-    optimise.automatic = true;
 
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
       ];
+      auto-optimise-store = true;
     };
 
     registry = {
@@ -76,20 +76,21 @@
 
     gc = {
       automatic = true;
+      persistent = true;
       dates = "daily";
-      options = "--delete-older-than 1d";
+      options = "--delete-older-than 5d";
     };
   };
 
   services = {
     displayManager.sessionPackages = with pkgs; [ gnome-session.sessions ];
 
+    # GNOME
+    displayManager.gdm.enable = true;
+    displayManager.gdm.wayland = true;
+
     xserver = {
       enable = false;
-
-      # GNOME
-      displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = true;
 
       xkb.layout = "ch-qwerty";
       xkb.options = "caps:swapescape";

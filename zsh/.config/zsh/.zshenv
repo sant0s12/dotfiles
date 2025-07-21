@@ -19,8 +19,6 @@ export MOZ_USE_XINPUT2=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp"
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
-
 export PNPM_HOME="/home/santos/.local/share/pnpm"
 
 export NIXOS_CONFIG_DIR=$(readlink -f "$XDG_CONFIG_HOME/nixos")

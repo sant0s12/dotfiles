@@ -18,9 +18,14 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+
   boot.kernelModules = [
     "kvm-amd"
+  ];
+
+  boot.kernelParams = [
+    "systemd.restore_state=0"
+    "amdgpu.dcdebugmask=0x40000"
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ ];
@@ -106,7 +111,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ intel-compute-runtime ];
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -118,5 +122,5 @@
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

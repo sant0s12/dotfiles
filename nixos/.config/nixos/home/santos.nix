@@ -79,6 +79,7 @@
     zathura
     flatpak
     zotero
+    kitty
   ];
 
   services.hypridle = {
