@@ -5,10 +5,11 @@
   ...
 }:
 {
-  home.username = "santos";
+
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
+    sipctl
     vlc
     acpilight
     atool
@@ -55,6 +56,7 @@
     playerctl
     python3
     rebuild
+    nautilus
     ripgrep
     rofi-wayland
     segger-jlink

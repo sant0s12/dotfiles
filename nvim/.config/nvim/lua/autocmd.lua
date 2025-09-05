@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.api.nvim_create_autocmd('CursorHold', {
 	pattern = '*',
-	callback = function() vim.diagnostic.open_float(nil, { focusable = false }) end,
+	callback = function() vim.diagnostic.open_float(nil, { close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter' } }) end,
 })
 
 local vimtexConfig = vim.api.nvim_create_augroup('vimtexConfig', {})
@@ -38,17 +38,17 @@ vim.api.nvim_create_autocmd('TermOpen', {
 
 -- Close term if exited with 0
 vim.api.nvim_create_autocmd({ 'TermClose' }, {
-    desc = 'Automatically close terminal buffers when started with no arguments and exiting without an error',
-    callback = function(args)
-      if vim.v.event.status == 0 then
-        local info = vim.api.nvim_get_chan_info(vim.bo[args.buf].channel)
-        local argv = info.argv or {}
-        if #argv == 1 and argv[1] == vim.o.shell then
-          vim.cmd({ cmd = 'bdelete', args = { args.buf }, bang = true })
-        end
-      end
-    end,
-  })
+	desc = 'Automatically close terminal buffers when started with no arguments and exiting without an error',
+	callback = function(args)
+		if vim.v.event.status == 0 then
+			local info = vim.api.nvim_get_chan_info(vim.bo[args.buf].channel)
+			local argv = info.argv or {}
+			if #argv == 1 and argv[1] == vim.o.shell then
+				vim.cmd({ cmd = 'bdelete', args = { args.buf }, bang = true })
+			end
+		end
+	end,
+})
 
 -- Close quickfixlist on buffer close
 local qfClose = vim.api.nvim_create_augroup('qfClose', {})

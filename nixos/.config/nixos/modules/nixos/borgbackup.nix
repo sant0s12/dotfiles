@@ -131,29 +131,27 @@ let
         CPUSchedulingPolicy = "idle";
         IOSchedulingClass = "idle";
         ProtectSystem = "strict";
-        ReadWritePaths =
-          [
-            "${userHome}/.config/borg"
-            "${userHome}/.cache/borg"
-          ]
-          ++ cfg.readWritePaths
-          # Borg needs write access to repo if it is not remote
-          ++ optional (isLocalPath cfg.repo) cfg.repo;
+        ReadWritePaths = [
+          "${userHome}/.config/borg"
+          "${userHome}/.cache/borg"
+        ]
+        ++ cfg.readWritePaths
+        # Borg needs write access to repo if it is not remote
+        ++ optional (isLocalPath cfg.repo) cfg.repo;
         PrivateTmp = cfg.privateTmp;
       };
-      environment =
-        {
-          BORG_REPO = cfg.repo;
-          inherit (cfg)
-            extraArgs
-            extraInitArgs
-            extraCreateArgs
-            extraPruneArgs
-            extraCompactArgs
-            ;
-        }
-        // (mkPassEnv cfg)
-        // cfg.environment;
+      environment = {
+        BORG_REPO = cfg.repo;
+        inherit (cfg)
+          extraArgs
+          extraInitArgs
+          extraCreateArgs
+          extraPruneArgs
+          extraCompactArgs
+          ;
+      }
+      // (mkPassEnv cfg)
+      // cfg.environment;
     };
 
   mkBackupTimers =
@@ -164,7 +162,8 @@ let
       timerConfig = {
         Persistent = cfg.persistentTimer;
         OnCalendar = cfg.startAt;
-      } // cfg.extraTimerConfig;
+      }
+      // cfg.extraTimerConfig;
       # if remote-backup wait for network
       after = optional (cfg.persistentTimer && !isLocalPath cfg.repo) "network-online.target";
     };
@@ -189,12 +188,11 @@ let
     mkWrapperDrv {
       original = getExe config.services.borgbackup.package;
       name = "borg-job-${name}";
-      set =
-        {
-          BORG_REPO = cfg.repo;
-        }
-        // (mkPassEnv cfg)
-        // cfg.environment;
+      set = {
+        BORG_REPO = cfg.repo;
+      }
+      // (mkPassEnv cfg)
+      // cfg.environment;
     };
 
   # Paths listed in ReadWritePaths must exist before service is started
@@ -871,7 +869,8 @@ in
 
       environment.systemPackages = [
         config.services.borgbackup.package
-      ] ++ (mapAttrsToList mkBorgWrapper jobs);
+      ]
+      ++ (mapAttrsToList mkBorgWrapper jobs);
     }
   );
 }

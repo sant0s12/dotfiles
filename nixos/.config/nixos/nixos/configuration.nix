@@ -133,6 +133,12 @@
 
   services.logind.lidSwitch = "suspend-then-hibernate";
 
+  # Define time delay for hibernation
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30m
+    SuspendState=mem
+  '';
+
   # Services
   services.upower.enable = true;
   services.udisks2.enable = true;
@@ -146,7 +152,7 @@
     enable = true;
     settings = {
       battery = {
-        governor = "powersave";
+        governor = "schedutil";
         turbo = "always";
 
         enable_thresholds = true;
