@@ -1,5 +1,5 @@
 #include "gruvbox-dark.resources"
-Xcursor.size: 16px
+Xcursor.size: 12px
 
 Xft.antialias:              true
 Xft.rgba:                   rgb
@@ -9,7 +9,26 @@ Xft.hintstyle:              hintsmedium
 ! URxvt config
 ! ===========
 
-URxvt*font: xft:Hack Nerd Font Mono:size=10:minspace=false:autohint=true, xft:Braille:size=8
+URxvt*font: \
+            xft:Comic Mono:style=Normal:antialias=true:size=12:minspace=False, \
+            xft:UbuntuMono Nerd Font Mono:style=Regular:antialias=true:size=12:minspace=False, \
+            xft:SauceCodePro Nerd Font:style=Regular:antialias=true:size=12:minspace=False, \
+            xft:DejaVuSansMono Nerd Font:antialias=true:size=12:minspace=False, \
+            xft:DroidSansMono Nerd Font Mono:antialias=true:size=12, \
+            xft:FuraMono NF:size=12:antialias=true:minspace=False, \
+            xft:RobotoMono Nerd Font:antialias=true:size=12:minspace=False, \
+            xft:Noto Sans Mono:antialias=true:size=12:minspace=False, \
+            xft:Monospace:style=Medium:antialias=true:minspace=False
+URxvt*boldFont: \
+            xft:Comic Mono:style=Bold:antialias=true:size=12:minspace=False, \
+            xft:UbuntuMono Nerd Font Mono:style=Regular:antialias=true:size=12:minspace=False, \
+            xft:SauceCodePro Nerd Font:style=Medium:antialias=true:size=12:minspace=False, \
+            xft:DejaVuSansMono Nerd Font:antialias=true:size=12:minspace=False, \
+            xft:DroidSansMono Nerd Font Mono:antialias=true:size=12, \
+            xft:FuraMono NF:size=12:antialias=true:minspace=False, \
+            xft:RobotoMono Nerd Font:antialias=true:size=12:minspace=False, \
+            xft:Noto Sans Mono:antialias=true:size=12:minspace=False, \
+            xft:Monospace:style=Medium:antialias=true:minspace=False
 URxvt*scrollBar: false
 URxvt*transparent: false
 URxvt*depth: 24
@@ -19,6 +38,8 @@ URxvt*cursorColor: #00FF00
 URxvt*letterSpace: -1
 URxvt.perl-ext-common: default,resize-font
 URxvt.resize-font.step: 1
+
+URxvt*geometry: 80x240+0+0
 
 ! Interaction
 ! ===========
@@ -48,3 +69,5 @@ URxvt.keysym.C-S-0x56: eval:paste_clipboard
 
 ! clear the scrollback
 ! URxvt.keysym.Control-l: command:\033c
+
+URxvt.keysym.Shift-Return: \033[27;2;13~

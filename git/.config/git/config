@@ -10,14 +10,16 @@
 	lga = log --all --decorate --abbrev-commit --graph
 [comit]
 	verbose = true
-[safe]
-	directory = /opt/flutter
-	directory = /home/santos/mnt/wgzimmer-notify
 [push]
+	recurseSubmodules = on-demand
 	autoSetupRemote = true
+	useForceIfIncludes = true
+	default = current
 [gpg]
 	format = ssh
 [init]
 	defaultBranch = main
-[safe]
-    directory = *
+[submodule]
+	recurse = true
+[status]
+	submodulesummary = true

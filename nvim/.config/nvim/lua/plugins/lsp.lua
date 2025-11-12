@@ -1,63 +1,18 @@
-local lsp_zero = require('lsp-zero').preset({
-  name = 'recommended',
-  float_border = 'single'
-})
-
-local lspconfig = require('lspconfig')
-
-lsp_zero.on_attach(function(client, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr })
-
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', function()
-    vim.api.nvim_command('set eventignore=CursorHold')
-    vim.lsp.buf.hover()
-    vim.api.nvim_command('autocmd CursorMoved <buffer> ++once set eventignore=""')
-  end, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-end)
-
 -- (Optional) Configure lua language server for neovim
-lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+vim.lsp.enable("lua_ls")
 
-lspconfig.clangd.setup({})
+vim.lsp.enable("clangd")
 
-lspconfig.rust_analyzer.setup{}
+vim.lsp.enable("rust_analyzer")
 
-lspconfig.texlab.setup{}
+vim.lsp.enable("texlab")
 
-lspconfig.svelte.setup{}
-
--- Flutter and Dart
-
-local dart_lsp = lsp_zero.build_options('dartls', {})
-
-require('flutter-tools').setup({
-  lsp = {
-    capabilities = dart_lsp.capabilities
-  },
-  widget_guides = {
-    enabled = true,
-  },
-})
+vim.lsp.enable("svelte")
 
 -- Completion
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local luasnip = require("luasnip")
 
 cmp.setup({
   formatting = {
@@ -70,17 +25,47 @@ cmp.setup({
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
+
     -- Add tab support
-    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    -- ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    -- ['<Tab>'] = cmp_action.luasnip_supertab(),
 
     ['<C-j>'] = cmp.mapping.scroll_docs(-4),
     ['<C-k>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = false,
-    })
+	['<CR>'] = cmp.mapping(function(fallback)
+        if cmp.visible() and cmp.get_active_entry() then
+            if luasnip.expandable() then
+                luasnip.expand()
+            else
+                cmp.confirm({
+                    select = true,
+                })
+            end
+        else
+            fallback()
+        end
+    end),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
 
   sources = {

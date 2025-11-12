@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.api.nvim_create_autocmd('CursorHold', {
 	pattern = '*',
-	callback = function() vim.diagnostic.open_float(nil, { close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter' } }) end,
+	callback = function() vim.diagnostic.open_float(nil, { close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter' }, focusable = false, scope = 'cursor' }) end,
 })
 
 local vimtexConfig = vim.api.nvim_create_augroup('vimtexConfig', {})

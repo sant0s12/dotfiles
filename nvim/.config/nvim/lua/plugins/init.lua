@@ -18,16 +18,14 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		'neovim/nvim-lspconfig',
 		requires = {
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' }, -- Required
 			-- Optional
 			{
-				"dundalek/lazy-lsp.nvim",
-				requires = { "neovim/nvim-lspconfig" },
-				config = get_config("lazy-lsp")
+				"mason-org/mason.nvim",
+				config = function()
+					require("mason").setup()
+				end
 			},
 			-- Autocompletion
 			{ 'hrsh7th/nvim-cmp' }, -- Required
@@ -78,7 +76,6 @@ return require('packer').startup(function(use)
 	-- Misc
 	use 'eandrju/cellular-automaton.nvim'
 	use { 'xiyaowong/telescope-emoji.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
-	use 'wakatime/vim-wakatime'
 
 	-- Flutter tools
 	use {
@@ -154,6 +151,18 @@ return require('packer').startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons' },
 		config = function() require('lualine').setup({ options = { theme = 'gruvbox' } }) end
+	}
+
+	-- Remote
+	use { "amitds1997/remote-nvim.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim", -- For standard functions
+			"MunifTanjim/nui.nvim", -- To build the plugin UI
+			"nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+		},
+		config = function()
+			require("remote-nvim").setup({})
+		end
 	}
 
 	-- Automatically set up your configuration after cloning packer.nvim
