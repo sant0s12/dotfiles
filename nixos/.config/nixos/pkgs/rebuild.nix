@@ -4,20 +4,21 @@ pkgs.writeShellApplication {
 
   # Based on https://github.com/0atman/noboilerplate/blob/main/scripts/38-nixos.md#dont-use-nix-env
   text = ''
-    pushd "$NIXOS_CONFIG_DIR"
-    nix fmt
-    find . -name '*.nix' | git diff -U0
+        pushd "$NH_FLAKE"
+        nix fmt
+        find . -name '*.nix' | git diff -U0
 
-    echo "Rebuilding NixOS..."
+    	clear
+        echo -ne "\033[?1049h\033[2J\033[H" # enter alt-buff and clear
+        echo "Rebuilding NixOS..."
 
-    sudo nixos-rebuild switch "$@" --flake .
+        nh os switch --update "$@"
 
-    IFS=" " read -r -a gen <<< "$(nixos-rebuild list-generations --flake . | grep current)"
-    generation="''${gen[0]}"
-    extra="''${gen[2]} ''${gen[3]} ''${gen[4]} ''${gen[5]}"
+        gen=$(nixos-rebuild list-generations --json | jq '.[] | select (.current == true) | "\(.generation) - \(.date) \(.nixosVersion) \(.kernelVersion)"')
 
-    echo "Rebuilt NixOS generation $generation $extra"
-    git commit -am "NixOS gen. $generation - $extra"
-    popd
+        echo -ne "\033[2J\033[?1049l" # exit alt-buff
+        echo "Rebuilt NixOS generation $gen"
+        git commit -am "NixOS gen. $gen"
+        popd
   '';
 }

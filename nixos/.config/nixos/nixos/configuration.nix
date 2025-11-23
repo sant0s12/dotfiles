@@ -48,7 +48,7 @@
       allowUnfree = true;
       joypixels.acceptLicense = true;
 
-      permittedInsecurePackages = [ "segger-jlink-qt4-810" ];
+      permittedInsecurePackages = [ "segger-jlink-qt4-874" ];
       segger-jlink.acceptLicense = true;
     };
   };
@@ -72,13 +72,6 @@
           type = "github";
         };
       };
-    };
-
-    gc = {
-      automatic = true;
-      persistent = true;
-      dates = "daily";
-      options = "--delete-older-than 5d";
     };
   };
 
@@ -108,7 +101,6 @@
       openocd
       segger-jlink
       nrf-udev
-      android-udev-rules
     ];
   };
 
@@ -135,7 +127,6 @@
 
   # Define time delay for hibernation
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30m
     SuspendState=mem
   '';
 
@@ -392,6 +383,13 @@
     ];
   };
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 5d --keep 3";
+    flake = "/home/santos/.config/nixos";
+  };
+
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -415,14 +413,14 @@
       pkgs.nerd-fonts.sauce-code-pro
       inconsolata
       comic-mono
-      ubuntu_font_family
+      ubuntu-classic
       fira
       inter
       raleway
       cm_unicode
       whatsapp-emoji-font
       corefonts
-      vistafonts
+      vista-fonts
       roboto
     ];
 

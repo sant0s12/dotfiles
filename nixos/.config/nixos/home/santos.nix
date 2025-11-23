@@ -33,7 +33,7 @@
     imagemagick
     inkscape
     inotify-tools
-    jellyfin-media-player
+    # jellyfin-media-player -> qtwebengine is bad
     jq
     k9s
     kdePackages.kdenlive
@@ -58,7 +58,7 @@
     rebuild
     nautilus
     ripgrep
-    rofi-wayland
+    rofi
     segger-jlink
     signal-desktop
     slurp
@@ -76,7 +76,7 @@
     wdisplays
     wl-clipboard
     wtype
-    xdragon
+    dragon-drop
     youtube-music
     zathura
     flatpak
