@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	checker = { enabled = true },
+	checker = { enabled = true, notify = false },
 	install = { colorscheme = { "gruvbox" } },
 	spec = {
 		{
@@ -24,16 +24,11 @@ require("lazy").setup({
 			dependencies = {
 				-- Optional
 				{
-					"mason-org/mason.nvim",
-					config = function()
-						require("mason").setup()
-					end,
-				},
-				{
 					"mason-org/mason-lspconfig.nvim",
-					config = function()
-						require("mason-lspconfig").setup()
-					end,
+					opts = {},
+					dependencies = {
+						{ "mason-org/mason.nvim", opts = {} },
+					},
 				},
 				-- Autocompletion
 				{
@@ -115,22 +110,21 @@ require("lazy").setup({
 						vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 					end,
 				})
+
+				vim.lsp.config("rust_analyzer", {
+					settings = {
+						["rust-analyzer"] = {
+							check = {
+								command = "clippy",
+							},
+						},
+					},
+				})
 			end,
 		},
 
 		-- Grammar check
 		{ "brymer-meneses/grammar-guard.nvim" },
-
-		{
-			"nvim-telescope/telescope.nvim",
-			dependencies = { { "nvim-lua/plenary.nvim" } },
-			config = function()
-				local builtin = require("telescope.builtin")
-				vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-				vim.keymap.set("n", "<leader>fp", builtin.git_files, {})
-				vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-			end,
-		},
 
 		{
 			"lervag/vimtex",
@@ -191,9 +185,6 @@ require("lazy").setup({
 		-- Docs generation
 		{
 			"danymat/neogen",
-			config = function()
-				require("neogen").setup({})
-			end,
 		},
 
 		-- Github copilot
@@ -202,13 +193,11 @@ require("lazy").setup({
 			enabled = false,
 			cmd = "Copilot",
 			event = "InsertEnter",
-			config = function()
-				require("copilot").setup({
-					suggestion = {
-						auto_trigger = true,
-					},
-				})
-			end,
+			opts = {
+				suggestion = {
+					auto_trigger = true,
+				},
+			},
 		},
 
 		-- Formatting
@@ -225,10 +214,10 @@ require("lazy").setup({
 				},
 			},
 			opts = {
-				format_on_save = {
-					lsp_format = "fallback",
-					timeout_ms = 500,
-				},
+				-- format_on_save = {
+				-- 	lsp_format = "fallback",
+				-- 	timeout_ms = 500,
+				-- },
 
 				formatters_by_ft = {
 					lua = { "stylua" },
@@ -249,9 +238,6 @@ require("lazy").setup({
 		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
-			config = function()
-				require("nvim-autopairs").setup({})
-			end,
 		},
 
 		-- Toggleterm
@@ -278,34 +264,25 @@ require("lazy").setup({
 		-- Block comments
 		{
 			"numToStr/Comment.nvim",
-			config = function()
-				require("Comment").setup()
-			end,
 		},
 
 		-- Indent lines
 		{
 			"lukas-reineke/indent-blankline.nvim",
-			config = function()
-				require("ibl").setup()
-			end,
 		},
 
 		-- Lualine
 		{
 			"nvim-lualine/lualine.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = function()
-				require("lualine").setup({ options = { theme = "gruvbox" } })
-			end,
+			opts = {
+				theme = "gruvbox",
+			},
 		},
 
 		{
 			"folke/todo-comments.nvim",
 			dependencies = { "nvim-lua/plenary.nvim" },
-			config = function()
-				require("todo-comments").setup({})
-			end,
 		},
 
 		{

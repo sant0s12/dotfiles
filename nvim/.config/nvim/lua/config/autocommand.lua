@@ -1,14 +1,11 @@
-local configFiles = vim.api.nvim_create_augroup("configFiles", {})
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = "*/polybar/config",
 	command = "call system('$XDG_CONFIG_HOME/polybar/launch.sh')",
-	group = configFiles,
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = "*/i3/config",
 	command = "call system('i3 restart')",
-	group = configFiles,
 })
 
 vim.api.nvim_create_autocmd("CursorHold", {
@@ -21,11 +18,9 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	end,
 })
 
-local vimtexConfig = vim.api.nvim_create_augroup("vimtexConfig", {})
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VimtexEventQuit",
 	command = "call vimtex#compiler#clean(0)",
-	group = vimtexConfig,
 })
 
 -- Start terminal in insert mode
@@ -49,8 +44,16 @@ vim.api.nvim_create_autocmd({ "TermClose" }, {
 })
 
 -- Close quickfixlist on buffer close
-vim.api.nvim_create_augroup("qfClose", {})
 vim.api.nvim_create_autocmd("WinEnter", {
 	pattern = "*",
 	command = "if winnr('$') == 1 && &buftype == 'quickfix'|q|endif",
+})
+
+-- Auto update plugins
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        if require("lazy.status").has_updates() then
+            require("lazy").update({ show = true, })
+        end
+    end,
 })
