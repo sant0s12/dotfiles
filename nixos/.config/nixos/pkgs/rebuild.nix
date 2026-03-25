@@ -12,7 +12,7 @@ pkgs.writeShellApplication {
         echo -ne "\033[?1049h\033[2J\033[H" # enter alt-buff and clear
         echo "Rebuilding NixOS..."
 
-        nh os switch --update "$@"
+        nh os switch "$@"
 
         gen=$(nixos-rebuild list-generations --json | jq '.[] | select (.current == true) | "\(.generation) - \(.date) \(.nixosVersion) \(.kernelVersion)"')
 

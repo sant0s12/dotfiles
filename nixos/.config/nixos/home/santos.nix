@@ -9,8 +9,9 @@
   home.homeDirectory = "/home/santos";
 
   home.packages = with pkgs; [
-    sipctl
     vlc
+    qpwgraph
+    kodi
     acpilight
     atool
     bat
@@ -48,10 +49,9 @@
     libreoffice
     loupe
     mpv
-    neofetch
+    fastfetch
     networkmanagerapplet
     nrfconnect
-    nextcloud-client
     pavucontrol
     playerctl
     python3

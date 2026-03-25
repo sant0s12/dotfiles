@@ -21,7 +21,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 8;
+  boot.loader.systemd-boot.configurationLimit = 3;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel
@@ -76,11 +76,14 @@
   };
 
   services = {
-    displayManager.sessionPackages = with pkgs; [ gnome-session.sessions ];
+    displayManager.defaultSession = "hyprland-uwsm";
 
-    # GNOME
+    # GDM
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
+
+    # GNOME
+    desktopManager.gnome.enable = true;
 
     xserver = {
       enable = false;
@@ -91,7 +94,7 @@
         description = "Swiss German QWERTY Layout";
         languages = [ "de" ];
         symbolsFile = builtins.fetchurl {
-          url = ''https://gist.githubusercontent.com/sant0s12/9506659fbb86cbb25419a7856e0cf5a2/raw/9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty'';
+          url = "https://gist.githubusercontent.com/sant0s12/9506659fbb86cbb25419a7856e0cf5a2/raw/9176a9e655beffb50247027c09761a40dc5e34b8/ch-qwerty";
           sha256 = "39a84dc8f1bde46bff21929b97e8f8da5ad10b4853257c468ca464f452c4500b";
         };
       };
@@ -125,10 +128,10 @@
 
   services.logind.lidSwitch = "suspend-then-hibernate";
 
-  # Define time delay for hibernation
-  systemd.sleep.extraConfig = ''
-    SuspendState=mem
-  '';
+  # # Define time delay for hibernation
+  # systemd.sleep.settings.Sleep = ''
+  #   SuspendState=mem
+  # '';
 
   # Services
   services.upower.enable = true;
@@ -386,7 +389,7 @@
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep-since 5d --keep 3";
+    clean.extraArgs = "--keep-since 5d";
     flake = "/home/santos/.config/nixos";
   };
 
