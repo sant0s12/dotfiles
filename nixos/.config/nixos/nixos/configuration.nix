@@ -177,8 +177,10 @@
     enable = true;
     nssmdns4 = true;
     nssmdns6 = true;
+    openFirewall = true;
     publish = {
-      domain = true;
+      enable = true;
+      userServices = true;
       addresses = true;
     };
   };
