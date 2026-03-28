@@ -78,12 +78,11 @@
   services = {
     displayManager.defaultSession = "hyprland-uwsm";
 
-    # GDM
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
+    # Enable the COSMIC login manager
+    displayManager.cosmic-greeter.enable = true;
 
-    # GNOME
-    desktopManager.gnome.enable = true;
+    # Enable the COSMIC desktop environment
+    desktopManager.cosmic.enable = true;
 
     xserver = {
       enable = false;
