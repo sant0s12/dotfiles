@@ -77,9 +77,9 @@
 
   services = {
     displayManager.defaultSession = "hyprland-uwsm";
-    displayManager.plasma-login-manager.enable = true;
+    displayManager.gdm.enable = true;
 
-    desktopManager.plasma6.enable = true;
+    desktopManager.gnome.enable = true;
 
     xserver = {
       enable = false;
