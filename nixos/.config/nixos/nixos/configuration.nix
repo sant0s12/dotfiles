@@ -77,12 +77,9 @@
 
   services = {
     displayManager.defaultSession = "hyprland-uwsm";
+    displayManager.plasma-login-manager.enable = true;
 
-    # Enable the COSMIC login manager
-    displayManager.cosmic-greeter.enable = true;
-
-    # Enable the COSMIC desktop environment
-    desktopManager.cosmic.enable = true;
+    desktopManager.plasma6.enable = true;
 
     xserver = {
       enable = false;
@@ -236,8 +233,13 @@
     jack.enable = true;
   };
 
+  # Enable flatpak
+  services.flatpak.enable = true;
+
   security.polkit.enable = true;
   systemd = {
+    # Fix for uwsm hyprland
+    services.display-manager.path = [ pkgs.uwsm ];
 
     # Fix for ROCm
     tmpfiles.rules = [
