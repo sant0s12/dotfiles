@@ -34,7 +34,6 @@
     imagemagick
     inkscape
     inotify-tools
-    # jellyfin-media-player -> qtwebengine is bad
     jq
     k9s
     kdePackages.kdenlive
@@ -82,6 +81,7 @@
     flatpak
     zotero
     kitty
+    pi-coding-agent
   ];
 
   services.hypridle = {

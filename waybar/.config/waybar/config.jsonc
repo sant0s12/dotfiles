@@ -123,8 +123,7 @@
     "custom/trash": {
         "format": " {}",
         "interval": 60,
-        "exec": "du --summarize -h $TRASH/files -t 5kB | { read usage; if [ -z \"$usage\" ]; then
-                 echo 0; else echo \"$usage\" | cut -f -1; fi; }",
+        "exec": "du --summarize -h $TRASH/files -t 5kB | { read usage; if [ -z \"$usage\" ]; then echo 0; else echo \"$usage\" | cut -f -1; fi; }",
         "on-click": "$EXPLORER $TRASH",
         "on-click-right": "trash-empty -f ; pkill -x -SIGRTMIN+9 waybar",
         "signal": 9
