@@ -27,6 +27,9 @@
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Enable sysrq
+  boot.kernel.sysctl."kernel.sysrq" = 1;
+
   networking = {
     hostName = "acedia";
 
