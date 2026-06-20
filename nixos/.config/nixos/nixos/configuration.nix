@@ -24,11 +24,8 @@
   boot.loader.systemd-boot.configurationLimit = 3;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Enable sysrq
-  boot.kernel.sysctl."kernel.sysrq" = 1;
+  # Use zen kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking = {
     hostName = "acedia";
