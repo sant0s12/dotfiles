@@ -25,7 +25,6 @@
 
   boot.kernelParams = [
     "systemd.restore_state=0"
-    "amdgpu.dcdebugmask=0x40000"
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ ];
