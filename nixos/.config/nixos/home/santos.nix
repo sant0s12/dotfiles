@@ -30,7 +30,6 @@
     ghostscript
     gimp3
     grim
-    hexchat
     imagemagick
     inkscape
     inotify-tools
@@ -50,7 +49,6 @@
     mpv
     fastfetch
     networkmanagerapplet
-    nrfconnect
     pavucontrol
     playerctl
     python3
@@ -58,7 +56,6 @@
     nautilus
     ripgrep
     rofi
-    segger-jlink
     signal-desktop
     slurp
     sparrow

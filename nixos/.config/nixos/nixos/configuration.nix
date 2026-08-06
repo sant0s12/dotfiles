@@ -48,8 +48,7 @@
       allowUnfree = true;
       joypixels.acceptLicense = true;
 
-      permittedInsecurePackages = [ "segger-jlink-qt4-874" ];
-      segger-jlink.acceptLicense = true;
+      permittedInsecurePackages = [ ];
     };
   };
 
@@ -98,7 +97,6 @@
 
     udev.packages = with pkgs; [
       openocd
-      segger-jlink
       nrf-udev
     ];
   };
