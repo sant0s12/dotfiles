@@ -20,7 +20,6 @@
     ctpv
     discord
     sshfs
-    dunst
     evince
     ferdium
     ffmpeg
@@ -60,15 +59,12 @@
     slurp
     sparrow
     stow
-    swaybg
-    swayosd
     syncthing
     thunderbird
     tldr
     trash-cli
     udiskie
     unzip
-    waybar
     wdisplays
     wl-clipboard
     wtype
@@ -88,7 +84,7 @@
       general = {
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
-        lock_cmd = "lockscreen";
+        lock_cmd = "noctalia msg session lock";
       };
 
       listener = [

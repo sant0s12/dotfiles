@@ -191,30 +191,15 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  programs.hyprlock.enable = true;
-
-  xdg.portal = {
+  # Noctalia - desktop shell replacing waybar, lockscreen, OSD, notifications
+  programs.noctalia = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-    ];
-  };
-
-  xdg.mime.defaultApplications = {
-    "text/html" = "firefox.desktop";
-    "x-scheme-handler/http" = "firefox.desktop";
-    "x-scheme-handler/https" = "firefox.desktop";
-    "x-scheme-handler/about" = "firefox.desktop";
-    "x-scheme-handler/unknown" = "firefox.desktop";
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableGlobalCompInit = false;
+    recommendedServices.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;
+
+  programs.zsh.enable = true;
 
   programs.direnv.enable = true;
 

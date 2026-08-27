@@ -76,7 +76,7 @@ type bat &> /dev/null && alias cat=bat
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
 alias py='python'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
-alias hyprconf='$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf'
+alias hyprconf='$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.lua'
 alias conda-activate='source ~/.miniconda3/bin/activate'
 alias make="make -j $(($(nproc) + 1))"
 alias paru-remove-unused="paru -Qtdq | paru -Rns -"

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-while true; do
-	pics=$(ls $1)
-	for i in $pics; do
-		setwallpaper ~/Pictures/wallpapers/$i
-		sleep $2
-	done
-done
