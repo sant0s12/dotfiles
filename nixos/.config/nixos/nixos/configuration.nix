@@ -189,6 +189,8 @@
     withUWSM = true;
   };
 
+  programs.niri.enable = true;
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Noctalia - desktop shell replacing waybar, lockscreen, OSD, notifications
